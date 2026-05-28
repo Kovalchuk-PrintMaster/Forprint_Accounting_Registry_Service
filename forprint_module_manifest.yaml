@@ -1,0 +1,103 @@
+
+module_id: forprint_accounting_registry_service
+module_name: ForPrint Accounting Registry Service
+role: accounting_registry_and_one_c_boundary
+status: boundary_correction_development
+
+description: >
+  Accounting Registry / 1C boundary / accounting truth service for ForPrint.
+  The service owns accounting document state, payments, invoices, 1C snapshots,
+  1C staging records, mappings, reconciliation reports, and accounting reference
+  projections. It must not become CRM, Operational Registry, Library,
+  Integration Gateway, Calculator, Warehouse, or a general business database.
+
+architecture_boundary:
+  blueprint_role: accounting_registry_and_one_c_boundary
+  runtime_gateway_future: forprint_integration_gateway
+  canonical_contract_truth_future: forprint_library
+  operational_truth_future: forprint_operational_registry
+  business_workflow_owner_future: forprint_crm
+
+owns:
+  - invoice
+  - payment
+  - payment_status
+  - accounting_document
+  - accounting_document_state
+  - financial_document_state
+  - one_c_raw_snapshot
+  - one_c_staging_record
+  - one_c_import_batch
+  - one_c_export_package
+  - one_c_mapping_record
+  - accounting_reconciliation_report
+  - accounting_reference_projection
+  - snapshot_file_metadata
+  - import_job
+  - export_job
+  - reconciliation_job
+  - mapping_issue
+  - accounting_validation_issue
+
+may_reference_as_projection_only:
+  - accounting_counterparty_reference
+  - one_c_counterparty_snapshot
+  - accounting_counterparty_projection
+  - one_c_nomenclature_snapshot
+  - accounting_product_reference
+  - accounting_nomenclature_projection
+  - order_accounting_reference
+  - invoice_source_reference
+  - external_order_reference
+
+must_not_own:
+  - client_registry
+  - customer_profile
+  - customer_interaction_history
+  - crm_contact_history
+  - sales_pipeline
+  - order_registry
+  - production_order
+  - operational_task_registry
+  - production_status
+  - order_status_as_operational_truth
+  - warehouse_stock
+  - warehouse_reservation
+  - warehouse_writeoff
+  - material_catalog
+  - product_catalog
+  - product_template_as_library_truth
+  - price_calculation
+  - calculator_price_logic
+  - prepress_file_lifecycle
+  - delivery_status_as_logistics_truth
+  - crm_dashboard_state
+  - customer_interaction_history
+  - business_workflow_decisions
+  - integration_routing
+  - architecture_governance
+  - full_one_c_mirror
+  - general_business_database
+
+deferred:
+  - full_one_c_production_import
+  - real_one_c_api_integration
+  - database_heavy_migration_layer
+  - operational_registry_inside_this_service
+  - crm_dashboard_logic
+  - invoice_creation_through_real_gateway_runtime
+  - real_crm_integration
+  - real_library_integration
+  - real_calculator_integration
+  - warehouse_integration
+  - global_product_catalog
+  - global_client_registry
+  - production_payment_synchronization
+  - large_refactoring
+
+local_contract_policy:
+  fixture_status: placeholder
+  canonical_contract_truth: forprint_library_future
+  notes: >
+    Local contracts are placeholders for development and tests only.
+    They are not canonical system contracts.

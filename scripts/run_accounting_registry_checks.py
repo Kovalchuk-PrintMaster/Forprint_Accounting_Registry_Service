@@ -1,0 +1,357 @@
+# python scripts/run_accounting_registry_checks.py
+
+"""
+Script name:
+    run_accounting_registry_checks.py
+
+Description:
+    Boundary-focused check runner for ForPrint Accounting Registry Service.
+
+Purpose:
+    Runs lint, tests, boundary validations, placeholder contract checks,
+    and generates readable terminal, JSON, and Markdown reports.
+
+Generated files:
+    - reports/accounting_registry_check_report.json
+    - reports/accounting_registry_check_report.md
+
+Relevance:
+    This script helps detect early drift into CRM, Operational Registry,
+    Library, Gateway, or general business database responsibilities.
+"""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+import time
+from dataclasses import asdict, dataclass
+from pathlib import Path
+from typing import Any
+
+import yaml
+from rich.console import Console
+from rich.table import Table
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+REPORTS_DIR = PROJECT_ROOT / "reports"
+JSON_REPORT_PATH = REPORTS_DIR / "accounting_registry_check_report.json"
+MARKDOWN_REPORT_PATH = REPORTS_DIR / "accounting_registry_check_report.md"
+
+REQUIRED_BOUNDARY_FILES = [
+    "README.md",
+    "forprint_module_manifest.yaml",
+    "docs/architecture/accounting_registry_boundaries.md",
+    "docs/architecture/one_c_boundary.md",
+    "docs/architecture/accounting_vs_operational_registry.md",
+    "docs/development/model_naming_rules.md",
+    "contracts/placeholders/accounting.invoice_request.v1.yaml",
+    "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
+    "contracts/placeholders/accounting.finance_summary.v1.yaml",
+    "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
+]
+
+REQUIRED_MANIFEST_OWNS = {
+    "invoice",
+    "payment",
+    "payment_status",
+    "accounting_document",
+    "one_c_raw_snapshot",
+    "one_c_staging_record",
+    "one_c_mapping_record",
+    "accounting_reconciliation_report",
+    "accounting_reference_projection",
+}
+
+REQUIRED_MANIFEST_MUST_NOT_OWN = {
+    "client_registry",
+    "order_registry",
+    "operational_task_registry",
+    "production_status",
+    "warehouse_stock",
+    "material_catalog",
+    "product_catalog",
+    "price_calculation",
+    "crm_dashboard_state",
+    "customer_interaction_history",
+    "business_workflow_decisions",
+    "integration_routing",
+    "architecture_governance",
+}
+
+PLACEHOLDER_CONTRACTS = [
+    "contracts/placeholders/accounting.invoice_request.v1.yaml",
+    "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
+    "contracts/placeholders/accounting.finance_summary.v1.yaml",
+    "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
+]
+
+
+@dataclass(frozen=True)
+class CheckResult:
+    """One check result for terminal, JSON, and Markdown reports."""
+
+    name: str
+    expected: str
+    status: str
+    duration_seconds: float
+    details: str = ""
+
+
+def run_subprocess_check(name: str, expected: str, command: list[str]) -> CheckResult:
+    """Run a subprocess check and return structured result."""
+    started_at = time.perf_counter()
+    result = subprocess.run(
+        command,
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    duration = time.perf_counter() - started_at
+
+    details = ""
+    if result.returncode != 0:
+        details = "\n".join(
+            item
+            for item in [result.stdout.strip(), result.stderr.strip()]
+            if item
+        )
+
+    return CheckResult(
+        name=name,
+        expected=expected,
+        status="OK" if result.returncode == 0 else "FAIL",
+        duration_seconds=duration,
+        details=details,
+    )
+
+
+def validate_boundary_files() -> CheckResult:
+    """Validate that required boundary files exist."""
+    started_at = time.perf_counter()
+    missing = [
+        relative_path
+        for relative_path in REQUIRED_BOUNDARY_FILES
+        if not (PROJECT_ROOT / relative_path).exists()
+    ]
+
+    return CheckResult(
+        name="Boundary files",
+        expected="Boundary docs, manifest, and placeholder contracts exist",
+        status="OK" if not missing else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details=", ".join(missing),
+    )
+
+
+def load_yaml_file(relative_path: str) -> dict[str, Any]:
+    """Load YAML file from project root."""
+    path = PROJECT_ROOT / relative_path
+    return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+
+def validate_module_manifest() -> CheckResult:
+    """Validate Accounting Registry module manifest boundary markers."""
+    started_at = time.perf_counter()
+    errors: list[str] = []
+
+    try:
+        manifest = load_yaml_file("forprint_module_manifest.yaml")
+    except Exception as exc:  # noqa: BLE001
+        return CheckResult(
+            name="Module manifest validation",
+            expected="Manifest is valid YAML and declares accounting boundary",
+            status="FAIL",
+            duration_seconds=time.perf_counter() - started_at,
+            details=str(exc),
+        )
+
+    if manifest.get("module_id") != "forprint_accounting_registry_service":
+        errors.append("module_id mismatch")
+
+    if manifest.get("role") != "accounting_registry_and_one_c_boundary":
+        errors.append("role mismatch")
+
+    if manifest.get("status") != "boundary_correction_development":
+        errors.append("status mismatch")
+
+    owns = set(manifest.get("owns", []))
+    must_not_own = set(manifest.get("must_not_own", []))
+
+    missing_owns = sorted(REQUIRED_MANIFEST_OWNS - owns)
+    missing_forbidden = sorted(REQUIRED_MANIFEST_MUST_NOT_OWN - must_not_own)
+
+    if missing_owns:
+        errors.append(f"missing owns: {', '.join(missing_owns)}")
+
+    if missing_forbidden:
+        errors.append(f"missing must_not_own: {', '.join(missing_forbidden)}")
+
+    return CheckResult(
+        name="Module manifest validation",
+        expected="Manifest declares accounting role, owns, and must_not_own",
+        status="OK" if not errors else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details="; ".join(errors),
+    )
+
+
+def validate_placeholder_contracts() -> CheckResult:
+    """Validate that placeholder contracts are marked as non-canonical."""
+    started_at = time.perf_counter()
+    errors: list[str] = []
+
+    for relative_path in PLACEHOLDER_CONTRACTS:
+        try:
+            contract = load_yaml_file(relative_path)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"{relative_path}: {exc}")
+            continue
+
+        if contract.get("fixture_status") != "placeholder":
+            errors.append(f"{relative_path}: fixture_status is not placeholder")
+
+        if contract.get("canonical_contract_truth") != "forprint_library_future":
+            errors.append(f"{relative_path}: canonical_contract_truth mismatch")
+
+    return CheckResult(
+        name="Placeholder contract validation",
+        expected="Local contracts are placeholders and non-canonical",
+        status="OK" if not errors else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details="; ".join(errors),
+    )
+
+
+def all_checks_passed(results: list[CheckResult]) -> bool:
+    """Return True if all checks passed."""
+    return all(result.status == "OK" for result in results)
+
+
+def build_report_payload(results: list[CheckResult]) -> dict[str, Any]:
+    """Build JSON-serializable report payload."""
+    return {
+        "project": "ForPrint Accounting Registry Service",
+        "report_type": "boundary_check_report",
+        "status": "OK" if all_checks_passed(results) else "FAIL",
+        "checks": [asdict(result) for result in results],
+    }
+
+
+def render_markdown_report(results: list[CheckResult]) -> str:
+    """Render Markdown report."""
+    lines = [
+        "# ForPrint Accounting Registry Service — check report",
+        "",
+        f"Overall status: **{'OK' if all_checks_passed(results) else 'FAIL'}**",
+        "",
+        "| Перевірка | Очікуваний результат | Статус | Час |",
+        "|---|---|---:|---:|",
+    ]
+
+    for result in results:
+        lines.append(
+            "| "
+            f"{result.name} | "
+            f"{result.expected} | "
+            f"{result.status} | "
+            f"{result.duration_seconds:.2f}s |"
+        )
+
+    failed_details = [result for result in results if result.status != "OK" and result.details]
+
+    if failed_details:
+        lines.extend(["", "## Failure details", ""])
+        for result in failed_details:
+            lines.extend([f"### {result.name}", "", "```text", result.details, "```", ""])
+
+    return "\n".join(lines) + "\n"
+
+
+def write_reports(results: list[CheckResult]) -> None:
+    """Write JSON and Markdown reports to reports directory."""
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    JSON_REPORT_PATH.write_text(
+        json.dumps(build_report_payload(results), ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    MARKDOWN_REPORT_PATH.write_text(
+        render_markdown_report(results),
+        encoding="utf-8",
+    )
+
+
+def render_terminal_table(results: list[CheckResult]) -> None:
+    """Render a readable terminal table."""
+    console = Console()
+
+    table = Table(title="ForPrint Accounting Registry Service — check report")
+    table.add_column("Перевірка", style="cyan", no_wrap=True)
+    table.add_column("Очікуваний результат", style="white")
+    table.add_column("Статус", justify="center")
+    table.add_column("Час", justify="right")
+
+    for result in results:
+        status_text = "[green]OK[/green]" if result.status == "OK" else "[red]FAIL[/red]"
+        table.add_row(
+            result.name,
+            result.expected,
+            status_text,
+            f"{result.duration_seconds:.2f}s",
+        )
+
+    console.print(table)
+
+
+def run_all_checks() -> list[CheckResult]:
+    """Run all local checks."""
+    return [
+        run_subprocess_check(
+            name="Ruff lint",
+            expected="Немає lint-помилок у app/tests/scripts",
+            command=[sys.executable, "-m", "ruff", "check", "app", "tests", "scripts"],
+        ),
+        run_subprocess_check(
+            name="Pytest",
+            expected="Усі тести проходять",
+            command=[sys.executable, "-m", "pytest", "-q"],
+        ),
+        validate_boundary_files(),
+        validate_module_manifest(),
+        validate_placeholder_contracts(),
+    ]
+
+
+def main() -> int:
+    """Run checks and generate reports."""
+    console = Console()
+    console.print("🔎 Running ForPrint Accounting Registry Service checks...")
+
+    results = run_all_checks()
+
+    for result in results:
+        style = "green" if result.status == "OK" else "red"
+        console.print(
+            f"  - {result.name}: [{style}]{result.status}[/{style}] "
+            f"({result.duration_seconds:.2f}s)"
+        )
+
+    render_terminal_table(results)
+    write_reports(results)
+
+    console.print(f"📄 JSON report: {JSON_REPORT_PATH}")
+    console.print(f"📄 Markdown report: {MARKDOWN_REPORT_PATH}")
+
+    if all_checks_passed(results):
+        console.print("✅ Check report completed successfully.")
+        return 0
+
+    console.print("❌ Check report failed.")
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

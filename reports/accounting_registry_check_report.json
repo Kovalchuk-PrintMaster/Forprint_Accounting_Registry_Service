@@ -1,0 +1,42 @@
+{
+  "project": "ForPrint Accounting Registry Service",
+  "report_type": "boundary_check_report",
+  "status": "OK",
+  "checks": [
+    {
+      "name": "Ruff lint",
+      "expected": "Немає lint-помилок у app/tests/scripts",
+      "status": "OK",
+      "duration_seconds": 0.03794915205799043,
+      "details": ""
+    },
+    {
+      "name": "Pytest",
+      "expected": "Усі тести проходять",
+      "status": "OK",
+      "duration_seconds": 0.9008360409643501,
+      "details": ""
+    },
+    {
+      "name": "Boundary files",
+      "expected": "Boundary docs, manifest, and placeholder contracts exist",
+      "status": "OK",
+      "duration_seconds": 0.00023375311866402626,
+      "details": ""
+    },
+    {
+      "name": "Module manifest validation",
+      "expected": "Manifest declares accounting role, owns, and must_not_own",
+      "status": "OK",
+      "duration_seconds": 0.0056521769147366285,
+      "details": ""
+    },
+    {
+      "name": "Placeholder contract validation",
+      "expected": "Local contracts are placeholders and non-canonical",
+      "status": "OK",
+      "duration_seconds": 0.01311942609027028,
+      "details": ""
+    }
+  ]
+}

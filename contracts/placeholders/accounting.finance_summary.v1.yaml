@@ -1,0 +1,30 @@
+contract_id: accounting.finance_summary.v1
+fixture_status: placeholder
+canonical_contract_truth: forprint_library_future
+
+producer: forprint_accounting_registry_service
+consumer: forprint_crm_future_or_project_inspector_future
+
+purpose: >
+  Placeholder read-model contract for a limited finance summary.
+  It may support dashboards or inspection, but it must not become CRM dashboard ownership.
+
+minimal_payload:
+  period_from: string
+  period_to: string
+  currency: string
+  invoices_total: number
+  payments_total: number
+  unpaid_total: number
+  reconciliation_issues_count: integer
+
+must_not_include:
+  - customer_interaction_history
+  - operational_task_state
+  - production_status
+  - product_catalog_truth
+  - calculator_price_logic
+
+notes: >
+  This is a reporting projection only. It does not transfer business workflow
+  decisions or dashboard state ownership to Accounting Registry.

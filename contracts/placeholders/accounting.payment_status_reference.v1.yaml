@@ -1,0 +1,31 @@
+contract_id: accounting.payment_status_reference.v1
+fixture_status: placeholder
+canonical_contract_truth: forprint_library_future
+
+producer: forprint_accounting_registry_service
+consumer: forprint_crm_future_or_operational_registry_future
+
+purpose: >
+  Placeholder event/reference contract for exposing payment status
+  without transferring accounting ownership to CRM or Operational Registry.
+
+minimal_payload:
+  payment_reference_id: string
+  invoice_reference_id: string
+  source_reference_id: string
+  payment_status: string
+  paid_amount: number
+  currency: string
+  updated_at: string
+
+allowed_status_examples:
+  - unpaid
+  - partially_paid
+  - paid
+  - overpaid
+  - cancelled
+  - reconciliation_required
+
+notes: >
+  This contract exposes financial status only. It must not expose
+  accounting internals, 1C raw records, or CRM workflow decisions.

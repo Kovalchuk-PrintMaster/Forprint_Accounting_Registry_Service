@@ -1,0 +1,11 @@
+# ForPrint Accounting Registry Service — check report
+
+Overall status: **OK**
+
+| Перевірка | Очікуваний результат | Статус | Час |
+|---|---|---:|---:|
+| Ruff lint | Немає lint-помилок у app/tests/scripts | OK | 0.04s |
+| Pytest | Усі тести проходять | OK | 0.90s |
+| Boundary files | Boundary docs, manifest, and placeholder contracts exist | OK | 0.00s |
+| Module manifest validation | Manifest declares accounting role, owns, and must_not_own | OK | 0.01s |
+| Placeholder contract validation | Local contracts are placeholders and non-canonical | OK | 0.01s |

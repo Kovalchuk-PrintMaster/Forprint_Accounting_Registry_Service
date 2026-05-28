@@ -1,0 +1,29 @@
+contract_id: accounting.one_c_import_result.v1
+fixture_status: placeholder
+canonical_contract_truth: forprint_library_future
+
+producer: forprint_accounting_registry_service
+consumer: forprint_project_inspector_future_or_integration_gateway_future
+
+purpose: >
+  Placeholder event contract for reporting a local 1C import/snapshot result.
+
+minimal_payload:
+  import_job_id: string
+  snapshot_id: string
+  source_file_name: string
+  imported_records_count: integer
+  staging_records_count: integer
+  mapping_issues_count: integer
+  validation_issues_count: integer
+  status: string
+  completed_at: string
+
+allowed_status_examples:
+  - completed
+  - completed_with_warnings
+  - failed
+
+notes: >
+  This event reports accounting import state only.
+  It does not make Accounting Registry a full 1C mirror.
