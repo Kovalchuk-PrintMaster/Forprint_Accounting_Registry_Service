@@ -7,35 +7,42 @@
       "name": "Ruff lint",
       "expected": "Немає lint-помилок у app/tests/scripts",
       "status": "OK",
-      "duration_seconds": 0.03794915205799043,
+      "duration_seconds": 0.038458299823105335,
       "details": ""
     },
     {
       "name": "Pytest",
       "expected": "Усі тести проходять",
       "status": "OK",
-      "duration_seconds": 0.9008360409643501,
+      "duration_seconds": 1.4051655430812389,
       "details": ""
     },
     {
-      "name": "Boundary files",
-      "expected": "Boundary docs, manifest, and placeholder contracts exist",
+      "name": "Boundary and storage files",
+      "expected": "Boundary docs, storage docs, manifest, and placeholders exist",
       "status": "OK",
-      "duration_seconds": 0.00023375311866402626,
+      "duration_seconds": 0.0004865999799221754,
       "details": ""
     },
     {
       "name": "Module manifest validation",
       "expected": "Manifest declares accounting role, owns, and must_not_own",
       "status": "OK",
-      "duration_seconds": 0.0056521769147366285,
+      "duration_seconds": 0.007110496982932091,
       "details": ""
     },
     {
       "name": "Placeholder contract validation",
       "expected": "Local contracts are placeholders and non-canonical",
       "status": "OK",
-      "duration_seconds": 0.01311942609027028,
+      "duration_seconds": 0.011280388804152608,
+      "details": ""
+    },
+    {
+      "name": "Storage model boundary validation",
+      "expected": "No canonical Client/Order/Product/Material/Invoice/Payment models",
+      "status": "OK",
+      "duration_seconds": 0.0001818148884922266,
       "details": ""
     }
   ]

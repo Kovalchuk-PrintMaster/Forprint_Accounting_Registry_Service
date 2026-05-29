@@ -142,3 +142,38 @@ placeholder contract non-canonical status.
 
 ---
 
+## v0.2 storage foundation
+
+Current approved v0.2 direction:
+
+```text
+Accounting Registry v0.2 — OneC Snapshot / Staging / Mapping Foundation
+
+Allowed storage objects:
+
+OneCRawSnapshot
+OneCStagingRecord
+OneCMappingRecord
+OneCImportJob
+OneCExportJob
+AccountingReconciliationJob
+AccountingDocument
+InvoiceAccountingReference
+PaymentAccountingReference
+OrderAccountingReference
+
+This is a lightweight SQLModel/SQLite-compatible foundation for local development and tests.
+
+It is not a production DB strategy yet.
+
+It is not CRM.
+
+It is not Operational Registry.
+
+It is not ForPrint Library.
+
+It is not a full 1C mirror.
+
+
+---
+

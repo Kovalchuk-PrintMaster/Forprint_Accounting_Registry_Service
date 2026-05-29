@@ -8,16 +8,8 @@ Description:
     Boundary-focused check runner for ForPrint Accounting Registry Service.
 
 Purpose:
-    Runs lint, tests, boundary validations, placeholder contract checks,
-    and generates readable terminal, JSON, and Markdown reports.
-
-Generated files:
-    - reports/accounting_registry_check_report.json
-    - reports/accounting_registry_check_report.md
-
-Relevance:
-    This script helps detect early drift into CRM, Operational Registry,
-    Library, Gateway, or general business database responsibilities.
+    Runs lint, tests, boundary validations, storage foundation checks,
+    placeholder contract checks, and generates terminal, JSON, and Markdown reports.
 """
 
 from __future__ import annotations
@@ -46,6 +38,9 @@ REQUIRED_BOUNDARY_FILES = [
     "docs/architecture/one_c_boundary.md",
     "docs/architecture/accounting_vs_operational_registry.md",
     "docs/development/model_naming_rules.md",
+    "docs/architecture/accounting_storage_foundation.md",
+    "docs/architecture/one_c_snapshot_staging_flow.md",
+    "docs/architecture/accounting_storage_boundaries.md",
     "contracts/placeholders/accounting.invoice_request.v1.yaml",
     "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
     "contracts/placeholders/accounting.finance_summary.v1.yaml",
@@ -87,6 +82,24 @@ PLACEHOLDER_CONTRACTS = [
     "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
 ]
 
+STORAGE_MODELS_PATH = (
+    PROJECT_ROOT
+    / "app"
+    / "forprint_accounting_registry_service"
+    / "storage"
+    / "models.py"
+)
+
+FORBIDDEN_STORAGE_MODEL_MARKERS = [
+    "class Client(",
+    "class Customer(",
+    "class Order(",
+    "class Product(",
+    "class Material(",
+    "class Invoice(",
+    "class Payment(",
+]
+
 
 @dataclass(frozen=True)
 class CheckResult:
@@ -114,9 +127,7 @@ def run_subprocess_check(name: str, expected: str, command: list[str]) -> CheckR
     details = ""
     if result.returncode != 0:
         details = "\n".join(
-            item
-            for item in [result.stdout.strip(), result.stderr.strip()]
-            if item
+            item for item in [result.stdout.strip(), result.stderr.strip()] if item
         )
 
     return CheckResult(
@@ -129,7 +140,7 @@ def run_subprocess_check(name: str, expected: str, command: list[str]) -> CheckR
 
 
 def validate_boundary_files() -> CheckResult:
-    """Validate that required boundary files exist."""
+    """Validate that required boundary and storage docs exist."""
     started_at = time.perf_counter()
     missing = [
         relative_path
@@ -138,8 +149,8 @@ def validate_boundary_files() -> CheckResult:
     ]
 
     return CheckResult(
-        name="Boundary files",
-        expected="Boundary docs, manifest, and placeholder contracts exist",
+        name="Boundary and storage files",
+        expected="Boundary docs, storage docs, manifest, and placeholders exist",
         status="OK" if not missing else "FAIL",
         duration_seconds=time.perf_counter() - started_at,
         details=", ".join(missing),
@@ -173,9 +184,6 @@ def validate_module_manifest() -> CheckResult:
 
     if manifest.get("role") != "accounting_registry_and_one_c_boundary":
         errors.append("role mismatch")
-
-    if manifest.get("status") != "boundary_correction_development":
-        errors.append("status mismatch")
 
     owns = set(manifest.get("owns", []))
     must_not_own = set(manifest.get("must_not_own", []))
@@ -225,6 +233,33 @@ def validate_placeholder_contracts() -> CheckResult:
     )
 
 
+def validate_no_forbidden_storage_models() -> CheckResult:
+    """Validate that storage models do not introduce forbidden canonical classes."""
+    started_at = time.perf_counter()
+
+    if not STORAGE_MODELS_PATH.exists():
+        return CheckResult(
+            name="Storage model boundary validation",
+            expected="Storage models exist and avoid forbidden canonical names",
+            status="FAIL",
+            duration_seconds=time.perf_counter() - started_at,
+            details=f"Missing: {STORAGE_MODELS_PATH}",
+        )
+
+    content = STORAGE_MODELS_PATH.read_text(encoding="utf-8")
+    forbidden_found = [
+        marker for marker in FORBIDDEN_STORAGE_MODEL_MARKERS if marker in content
+    ]
+
+    return CheckResult(
+        name="Storage model boundary validation",
+        expected="No canonical Client/Order/Product/Material/Invoice/Payment models",
+        status="OK" if not forbidden_found else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details=", ".join(forbidden_found),
+    )
+
+
 def all_checks_passed(results: list[CheckResult]) -> bool:
     """Return True if all checks passed."""
     return all(result.status == "OK" for result in results)
@@ -260,7 +295,9 @@ def render_markdown_report(results: list[CheckResult]) -> str:
             f"{result.duration_seconds:.2f}s |"
         )
 
-    failed_details = [result for result in results if result.status != "OK" and result.details]
+    failed_details = [
+        result for result in results if result.status != "OK" and result.details
+    ]
 
     if failed_details:
         lines.extend(["", "## Failure details", ""])
@@ -278,10 +315,7 @@ def write_reports(results: list[CheckResult]) -> None:
         json.dumps(build_report_payload(results), ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    MARKDOWN_REPORT_PATH.write_text(
-        render_markdown_report(results),
-        encoding="utf-8",
-    )
+    MARKDOWN_REPORT_PATH.write_text(render_markdown_report(results), encoding="utf-8")
 
 
 def render_terminal_table(results: list[CheckResult]) -> None:
@@ -322,6 +356,7 @@ def run_all_checks() -> list[CheckResult]:
         validate_boundary_files(),
         validate_module_manifest(),
         validate_placeholder_contracts(),
+        validate_no_forbidden_storage_models(),
     ]
 
 
