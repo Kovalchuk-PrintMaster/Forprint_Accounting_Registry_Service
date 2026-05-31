@@ -7,49 +7,63 @@
       "name": "Ruff lint",
       "expected": "Немає lint-помилок у app/tests/scripts",
       "status": "OK",
-      "duration_seconds": 0.03843292105011642,
+      "duration_seconds": 0.03742747497744858,
       "details": ""
     },
     {
       "name": "Pytest",
       "expected": "Усі тести проходять",
       "status": "OK",
-      "duration_seconds": 1.4252143350895494,
+      "duration_seconds": 1.4755631720181555,
       "details": ""
     },
     {
-      "name": "Boundary and storage files",
-      "expected": "Boundary docs, storage docs, manifest, and placeholders exist",
+      "name": "Boundary, storage and OneC files",
+      "expected": "Boundary docs, storage docs, OneC docs, manifest and placeholders exist",
       "status": "OK",
-      "duration_seconds": 0.0005293430294841528,
+      "duration_seconds": 0.00033591408282518387,
       "details": ""
     },
     {
       "name": "Module manifest validation",
       "expected": "Manifest declares accounting role, owns, and must_not_own",
       "status": "OK",
-      "duration_seconds": 0.01193959079682827,
+      "duration_seconds": 0.005474031902849674,
       "details": ""
     },
     {
       "name": "Placeholder contract validation",
       "expected": "Local contracts are placeholders and non-canonical",
       "status": "OK",
-      "duration_seconds": 0.014922257978469133,
+      "duration_seconds": 0.015507743926718831,
       "details": ""
     },
     {
       "name": "Storage model boundary validation",
-      "expected": "No canonical Client/Order/Product/Material/Invoice/Payment models",
+      "expected": "No canonical Client/Order/Product/Material/Warehouse/Production models",
       "status": "OK",
-      "duration_seconds": 0.0001766500063240528,
+      "duration_seconds": 0.00017264694906771183,
       "details": ""
     },
     {
       "name": "OneC I/O boundary validation",
       "expected": "No canonical Client/Order/Product/Material/Warehouse/Production models",
       "status": "OK",
-      "duration_seconds": 0.00100356200709939,
+      "duration_seconds": 0.0017531930934637785,
+      "details": ""
+    },
+    {
+      "name": "Fixture safety validation",
+      "expected": "Committed fixtures are sanitized, examples and non-production",
+      "status": "OK",
+      "duration_seconds": 0.007510925177484751,
+      "details": ""
+    },
+    {
+      "name": "Gitignore sandbox validation",
+      "expected": "local_sandbox and DB-like files are ignored",
+      "status": "OK",
+      "duration_seconds": 0.00012941798195242882,
       "details": ""
     }
   ]

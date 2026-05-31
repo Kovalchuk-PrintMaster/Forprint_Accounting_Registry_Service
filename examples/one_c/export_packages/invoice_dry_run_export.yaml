@@ -1,0 +1,11 @@
+fixture_status: example
+real_1c_data: false
+sanitized: true
+production_allowed: false
+package_type: invoice_export
+dry_run_only: true
+manual_approval_required: true
+records:
+  - invoice_reference_id: invoice-ref-001
+    amount_total: 1000.0
+    currency: UAH

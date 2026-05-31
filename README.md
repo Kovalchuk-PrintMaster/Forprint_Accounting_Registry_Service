@@ -205,3 +205,9 @@ full payment lifecycle;
 CRM integration;
 Gateway runtime integration;
 Library contract registry integration.
+
+## v0.4 OneC Sandbox Direct I/O and Report Extraction Pack
+
+Current approved v0.4 direction:
+
+Accounting Registry v0.4 — OneC Sandbox Direct I/O, Report Extraction and Directory Exchange Pack

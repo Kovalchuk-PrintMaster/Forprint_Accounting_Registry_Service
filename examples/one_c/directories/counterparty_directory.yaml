@@ -1,0 +1,13 @@
+fixture_status: example
+real_1c_data: false
+sanitized: true
+production_allowed: false
+directory_kind: counterparty_accounting_references
+items:
+  - item_id: one-c-counterparty-001
+    raw_payload:
+      Код: "000001"
+      Назва: "ТОВ Приклад"
+    normalized_payload:
+      one_c_code: "000001"
+      display_name: "ТОВ Приклад"

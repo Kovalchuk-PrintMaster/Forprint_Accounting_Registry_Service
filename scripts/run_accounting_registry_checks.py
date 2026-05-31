@@ -8,8 +8,8 @@ Description:
     Boundary-focused check runner for ForPrint Accounting Registry Service.
 
 Purpose:
-    Runs lint, tests, boundary validations, storage foundation checks,
-    placeholder contract checks, and generates terminal, JSON, and Markdown reports.
+    Runs lint, tests, boundary validations, storage checks, OneC I/O checks,
+    v0.4 fixture checks, and generates terminal, JSON, and Markdown reports.
 """
 
 from __future__ import annotations
@@ -41,16 +41,19 @@ REQUIRED_BOUNDARY_FILES = [
     "docs/architecture/accounting_storage_foundation.md",
     "docs/architecture/one_c_snapshot_staging_flow.md",
     "docs/architecture/accounting_storage_boundaries.md",
-    "contracts/placeholders/accounting.invoice_request.v1.yaml",
-    "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
-    "contracts/placeholders/accounting.finance_summary.v1.yaml",
-    "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
     "docs/architecture/one_c_io_strategy.md",
     "docs/architecture/one_c_adapter_boundary.md",
     "docs/architecture/one_c_mapping_policy.md",
     "docs/architecture/one_c_read_write_policy.md",
     "docs/architecture/one_c_version_strategy.md",
     "docs/architecture/one_c_test_copy_policy.md",
+    "docs/architecture/one_c_directory_exchange.md",
+    "docs/architecture/one_c_report_extraction.md",
+    "docs/architecture/one_c_sandbox_direct_io.md",
+    "contracts/placeholders/accounting.invoice_request.v1.yaml",
+    "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
+    "contracts/placeholders/accounting.finance_summary.v1.yaml",
+    "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
 ]
 
 REQUIRED_MANIFEST_OWNS = {
@@ -89,21 +92,11 @@ PLACEHOLDER_CONTRACTS = [
 ]
 
 STORAGE_MODELS_PATH = (
-    PROJECT_ROOT
-    / "app"
-    / "forprint_accounting_registry_service"
-    / "storage"
-    / "models.py"
+    PROJECT_ROOT / "app" / "forprint_accounting_registry_service" / "storage" / "models.py"
 )
+ONE_C_IO_ROOT = PROJECT_ROOT / "app" / "forprint_accounting_registry_service" / "one_c_io"
 
-ONE_C_IO_ROOT = (
-    PROJECT_ROOT
-    / "app"
-    / "forprint_accounting_registry_service"
-    / "one_c_io"
-)
-
-FORBIDDEN_ONE_C_IO_MARKERS = [
+FORBIDDEN_MODEL_MARKERS = [
     "class Client(",
     "class Customer(",
     "class Order(",
@@ -113,14 +106,22 @@ FORBIDDEN_ONE_C_IO_MARKERS = [
     "class ProductionStatus(",
 ]
 
-FORBIDDEN_STORAGE_MODEL_MARKERS = [
-    "class Client(",
-    "class Customer(",
-    "class Order(",
-    "class Product(",
-    "class Material(",
-    "class Invoice(",
-    "class Payment(",
+SANITIZED_FIXTURE_FILES = [
+    "examples/one_c/directories/counterparty_directory.yaml",
+    "examples/one_c/reports/payment_register_snapshot.yaml",
+    "examples/one_c/export_packages/invoice_dry_run_export.yaml",
+    "examples/one_c/write_experiments/write_experiment_example.yaml",
+]
+
+REQUIRED_GITIGNORE_PATTERNS = [
+    "local_sandbox/",
+    "*.1CD",
+    "*.dt",
+    "*.cf",
+    "*.bak",
+    "*.dump",
+    "*.sqlite",
+    "*.db",
 ]
 
 
@@ -163,7 +164,7 @@ def run_subprocess_check(name: str, expected: str, command: list[str]) -> CheckR
 
 
 def validate_boundary_files() -> CheckResult:
-    """Validate that required boundary and storage docs exist."""
+    """Validate that required boundary/storage/OneC docs exist."""
     started_at = time.perf_counter()
     missing = [
         relative_path
@@ -172,8 +173,8 @@ def validate_boundary_files() -> CheckResult:
     ]
 
     return CheckResult(
-        name="Boundary and storage files",
-        expected="Boundary docs, storage docs, manifest, and placeholders exist",
+        name="Boundary, storage and OneC files",
+        expected="Boundary docs, storage docs, OneC docs, manifest and placeholders exist",
         status="OK" if not missing else "FAIL",
         duration_seconds=time.perf_counter() - started_at,
         details=", ".join(missing),
@@ -270,16 +271,97 @@ def validate_no_forbidden_storage_models() -> CheckResult:
         )
 
     content = STORAGE_MODELS_PATH.read_text(encoding="utf-8")
-    forbidden_found = [
-        marker for marker in FORBIDDEN_STORAGE_MODEL_MARKERS if marker in content
-    ]
+    forbidden_found = [marker for marker in FORBIDDEN_MODEL_MARKERS if marker in content]
 
     return CheckResult(
         name="Storage model boundary validation",
-        expected="No canonical Client/Order/Product/Material/Invoice/Payment models",
+        expected="No canonical Client/Order/Product/Material/Warehouse/Production models",
         status="OK" if not forbidden_found else "FAIL",
         duration_seconds=time.perf_counter() - started_at,
         details=", ".join(forbidden_found),
+    )
+
+
+def validate_one_c_io_boundary() -> CheckResult:
+    """Validate that OneC I/O package does not introduce forbidden ownership."""
+    started_at = time.perf_counter()
+
+    if not ONE_C_IO_ROOT.exists():
+        return CheckResult(
+            name="OneC I/O boundary validation",
+            expected="OneC I/O package exists and avoids forbidden canonical models",
+            status="FAIL",
+            duration_seconds=time.perf_counter() - started_at,
+            details=f"Missing: {ONE_C_IO_ROOT}",
+        )
+
+    content = "\n".join(
+        path.read_text(encoding="utf-8") for path in ONE_C_IO_ROOT.glob("*.py")
+    )
+    forbidden_found = [marker for marker in FORBIDDEN_MODEL_MARKERS if marker in content]
+
+    return CheckResult(
+        name="OneC I/O boundary validation",
+        expected="No canonical Client/Order/Product/Material/Warehouse/Production models",
+        status="OK" if not forbidden_found else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details=", ".join(forbidden_found),
+    )
+
+
+def validate_fixture_safety() -> CheckResult:
+    """Validate committed examples are sanitized and non-production."""
+    started_at = time.perf_counter()
+    errors: list[str] = []
+
+    for relative_path in SANITIZED_FIXTURE_FILES:
+        path = PROJECT_ROOT / relative_path
+        if not path.exists():
+            errors.append(f"missing fixture: {relative_path}")
+            continue
+
+        payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+        if payload.get("fixture_status") != "example":
+            errors.append(f"{relative_path}: fixture_status mismatch")
+        if payload.get("real_1c_data") is not False:
+            errors.append(f"{relative_path}: real_1c_data must be false")
+        if payload.get("sanitized") is not True:
+            errors.append(f"{relative_path}: sanitized must be true")
+        if payload.get("production_allowed") is not False:
+            errors.append(f"{relative_path}: production_allowed must be false")
+
+    return CheckResult(
+        name="Fixture safety validation",
+        expected="Committed fixtures are sanitized, examples and non-production",
+        status="OK" if not errors else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details="; ".join(errors),
+    )
+
+
+def validate_gitignore_sandbox_rules() -> CheckResult:
+    """Validate local sandbox and large DB-like files are ignored."""
+    started_at = time.perf_counter()
+    gitignore_path = PROJECT_ROOT / ".gitignore"
+
+    if not gitignore_path.exists():
+        return CheckResult(
+            name="Gitignore sandbox validation",
+            expected="Local sandbox paths and DB files are ignored",
+            status="FAIL",
+            duration_seconds=time.perf_counter() - started_at,
+            details="Missing .gitignore",
+        )
+
+    content = gitignore_path.read_text(encoding="utf-8")
+    missing = [pattern for pattern in REQUIRED_GITIGNORE_PATTERNS if pattern not in content]
+
+    return CheckResult(
+        name="Gitignore sandbox validation",
+        expected="local_sandbox and DB-like files are ignored",
+        status="OK" if not missing else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details=", ".join(missing),
     )
 
 
@@ -318,9 +400,7 @@ def render_markdown_report(results: list[CheckResult]) -> str:
             f"{result.duration_seconds:.2f}s |"
         )
 
-    failed_details = [
-        result for result in results if result.status != "OK" and result.details
-    ]
+    failed_details = [result for result in results if result.status != "OK" and result.details]
 
     if failed_details:
         lines.extend(["", "## Failure details", ""])
@@ -381,6 +461,8 @@ def run_all_checks() -> list[CheckResult]:
         validate_placeholder_contracts(),
         validate_no_forbidden_storage_models(),
         validate_one_c_io_boundary(),
+        validate_fixture_safety(),
+        validate_gitignore_sandbox_rules(),
     ]
 
 
@@ -411,34 +493,6 @@ def main() -> int:
     console.print("❌ Check report failed.")
     return 1
 
-def validate_one_c_io_boundary() -> CheckResult:
-    """Validate that OneC I/O layer does not introduce forbidden ownership."""
-    started_at = time.perf_counter()
-
-    if not ONE_C_IO_ROOT.exists():
-        return CheckResult(
-            name="OneC I/O boundary validation",
-            expected="OneC I/O package exists and avoids forbidden canonical models",
-            status="FAIL",
-            duration_seconds=time.perf_counter() - started_at,
-            details=f"Missing: {ONE_C_IO_ROOT}",
-        )
-
-    content = "\n".join(
-        path.read_text(encoding="utf-8")
-        for path in ONE_C_IO_ROOT.glob("*.py")
-    )
-    forbidden_found = [
-        marker for marker in FORBIDDEN_ONE_C_IO_MARKERS if marker in content
-    ]
-
-    return CheckResult(
-        name="OneC I/O boundary validation",
-        expected="No canonical Client/Order/Product/Material/Warehouse/Production models",
-        status="OK" if not forbidden_found else "FAIL",
-        duration_seconds=time.perf_counter() - started_at,
-        details=", ".join(forbidden_found),
-    )
 
 if __name__ == "__main__":
     raise SystemExit(main())

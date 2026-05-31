@@ -50,3 +50,16 @@ Thumbs.db
 # Local runtime files
 *.log
 *.pid
+
+# Local 1C sandbox / disposable databases
+local_sandbox/
+
+# 1C / database / backup files must never be committed
+*.1CD
+*.dt
+*.cf
+*.bak
+*.dump
+*.sqlite
+*.sqlite3
+*.db

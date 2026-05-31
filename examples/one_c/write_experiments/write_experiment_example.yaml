@@ -1,0 +1,6 @@
+fixture_status: example
+real_1c_data: false
+sanitized: true
+production_allowed: false
+dry_run: true
+destructive_test_write_allowed: false

@@ -1,0 +1,15 @@
+{
+  "fixture_status": "example",
+  "real_1c_data": false,
+  "sanitized": true,
+  "production_allowed": false,
+  "source_name": "sanitized_counterparties_export",
+  "records": [
+    {
+      "Код": "000001",
+      "Назва": "ТОВ Приклад",
+      "Телефон": "+380000000000",
+      "НевідомеПоле": "preserve-me"
+    }
+  ]
+}

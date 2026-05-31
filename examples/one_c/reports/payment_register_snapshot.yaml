@@ -1,0 +1,9 @@
+fixture_status: example
+real_1c_data: false
+sanitized: true
+production_allowed: false
+report_code: payment_register_snapshot
+rows:
+  - document_number: PAY-001
+    amount: 1000.0
+    currency: UAH
