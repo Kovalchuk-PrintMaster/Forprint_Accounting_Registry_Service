@@ -1,0 +1,1 @@
+"""Safe 1C I/O adapter discovery package."""

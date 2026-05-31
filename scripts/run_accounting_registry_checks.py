@@ -45,6 +45,12 @@ REQUIRED_BOUNDARY_FILES = [
     "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
     "contracts/placeholders/accounting.finance_summary.v1.yaml",
     "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
+    "docs/architecture/one_c_io_strategy.md",
+    "docs/architecture/one_c_adapter_boundary.md",
+    "docs/architecture/one_c_mapping_policy.md",
+    "docs/architecture/one_c_read_write_policy.md",
+    "docs/architecture/one_c_version_strategy.md",
+    "docs/architecture/one_c_test_copy_policy.md",
 ]
 
 REQUIRED_MANIFEST_OWNS = {
@@ -89,6 +95,23 @@ STORAGE_MODELS_PATH = (
     / "storage"
     / "models.py"
 )
+
+ONE_C_IO_ROOT = (
+    PROJECT_ROOT
+    / "app"
+    / "forprint_accounting_registry_service"
+    / "one_c_io"
+)
+
+FORBIDDEN_ONE_C_IO_MARKERS = [
+    "class Client(",
+    "class Customer(",
+    "class Order(",
+    "class Product(",
+    "class Material(",
+    "class WarehouseStock(",
+    "class ProductionStatus(",
+]
 
 FORBIDDEN_STORAGE_MODEL_MARKERS = [
     "class Client(",
@@ -357,6 +380,7 @@ def run_all_checks() -> list[CheckResult]:
         validate_module_manifest(),
         validate_placeholder_contracts(),
         validate_no_forbidden_storage_models(),
+        validate_one_c_io_boundary(),
     ]
 
 
@@ -387,6 +411,34 @@ def main() -> int:
     console.print("❌ Check report failed.")
     return 1
 
+def validate_one_c_io_boundary() -> CheckResult:
+    """Validate that OneC I/O layer does not introduce forbidden ownership."""
+    started_at = time.perf_counter()
+
+    if not ONE_C_IO_ROOT.exists():
+        return CheckResult(
+            name="OneC I/O boundary validation",
+            expected="OneC I/O package exists and avoids forbidden canonical models",
+            status="FAIL",
+            duration_seconds=time.perf_counter() - started_at,
+            details=f"Missing: {ONE_C_IO_ROOT}",
+        )
+
+    content = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in ONE_C_IO_ROOT.glob("*.py")
+    )
+    forbidden_found = [
+        marker for marker in FORBIDDEN_ONE_C_IO_MARKERS if marker in content
+    ]
+
+    return CheckResult(
+        name="OneC I/O boundary validation",
+        expected="No canonical Client/Order/Product/Material/Warehouse/Production models",
+        status="OK" if not forbidden_found else "FAIL",
+        duration_seconds=time.perf_counter() - started_at,
+        details=", ".join(forbidden_found),
+    )
 
 if __name__ == "__main__":
     raise SystemExit(main())

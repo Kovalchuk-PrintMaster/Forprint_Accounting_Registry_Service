@@ -20,7 +20,6 @@ It is not a general business database.
 
 ## Current status
 
-```text
 boundary_correction_development
 
 The current development phase is focused on safe architectural boundaries, documentation, manifest rules, placeholder contracts, and tests.
@@ -117,14 +116,12 @@ docs/architecture/one_c_boundary.md
 docs/architecture/accounting_vs_operational_registry.md
 docs/development/model_naming_rules.md
 
----
 ## Check report
 
 The project has an extended boundary check report.
 
 Run:
 
-```bash
 make check-report
 
 Generated reports:
@@ -140,13 +137,10 @@ required boundary files;
 module manifest boundary markers;
 placeholder contract non-canonical status.
 
----
-
 ## v0.2 storage foundation
 
 Current approved v0.2 direction:
 
-```text
 Accounting Registry v0.2 — OneC Snapshot / Staging / Mapping Foundation
 
 Allowed storage objects:
@@ -175,5 +169,39 @@ It is not ForPrint Library.
 It is not a full 1C mirror.
 
 
----
+## v0.3 OneC I/O Adapter Discovery Pack
 
+Current approved v0.3 direction:
+
+Accounting Registry v0.3 — OneC I/O Adapter Discovery Pack
+
+This is not real 1C integration.
+
+This layer defines:
+
+OneC adapter boundary;
+version/channel strategy;
+read/write policy;
+test copy policy;
+mapping/default policy;
+placeholder adapters.
+
+Implemented placeholder adapters:
+
+OneCFileExchangeAdapter
+OneCManualExportImportAdapter
+OneCDirectDbReadonlyAdapter
+OneCVersionedAdapterRegistry
+
+Strictly forbidden in v0.3:
+
+real live 1C connection;
+real 1C write;
+direct DB write;
+production sync;
+automatic posting;
+full invoice lifecycle;
+full payment lifecycle;
+CRM integration;
+Gateway runtime integration;
+Library contract registry integration.

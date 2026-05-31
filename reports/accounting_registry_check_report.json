@@ -7,42 +7,49 @@
       "name": "Ruff lint",
       "expected": "Немає lint-помилок у app/tests/scripts",
       "status": "OK",
-      "duration_seconds": 0.038458299823105335,
+      "duration_seconds": 0.03843292105011642,
       "details": ""
     },
     {
       "name": "Pytest",
       "expected": "Усі тести проходять",
       "status": "OK",
-      "duration_seconds": 1.4051655430812389,
+      "duration_seconds": 1.4252143350895494,
       "details": ""
     },
     {
       "name": "Boundary and storage files",
       "expected": "Boundary docs, storage docs, manifest, and placeholders exist",
       "status": "OK",
-      "duration_seconds": 0.0004865999799221754,
+      "duration_seconds": 0.0005293430294841528,
       "details": ""
     },
     {
       "name": "Module manifest validation",
       "expected": "Manifest declares accounting role, owns, and must_not_own",
       "status": "OK",
-      "duration_seconds": 0.007110496982932091,
+      "duration_seconds": 0.01193959079682827,
       "details": ""
     },
     {
       "name": "Placeholder contract validation",
       "expected": "Local contracts are placeholders and non-canonical",
       "status": "OK",
-      "duration_seconds": 0.011280388804152608,
+      "duration_seconds": 0.014922257978469133,
       "details": ""
     },
     {
       "name": "Storage model boundary validation",
       "expected": "No canonical Client/Order/Product/Material/Invoice/Payment models",
       "status": "OK",
-      "duration_seconds": 0.0001818148884922266,
+      "duration_seconds": 0.0001766500063240528,
+      "details": ""
+    },
+    {
+      "name": "OneC I/O boundary validation",
+      "expected": "No canonical Client/Order/Product/Material/Warehouse/Production models",
+      "status": "OK",
+      "duration_seconds": 0.00100356200709939,
       "details": ""
     }
   ]
