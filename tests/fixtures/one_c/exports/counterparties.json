@@ -1,0 +1,14 @@
+{
+  "fixture_status": "example",
+  "real_1c_data": false,
+  "sanitized": true,
+  "production_allowed": false,
+  "records": [
+    {
+      "Код": "000001",
+      "Назва": "ТОВ Приклад",
+      "Телефон": "+380000000000",
+      "НевідомеПоле": "preserve-me"
+    }
+  ]
+}

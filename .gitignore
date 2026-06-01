@@ -63,3 +63,22 @@ local_sandbox/
 *.sqlite
 *.sqlite3
 *.db
+
+# v0.5 local OneC sandbox working paths
+local_sandbox/
+local_sandbox/one_c_databases/
+local_sandbox/one_c_exports/
+local_sandbox/one_c_tmp/
+local_sandbox/one_c_working_copies/
+
+# 1C / database / dump / backup files must not be committed
+*.1CD
+*.dt
+*.cf
+*.bak
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+*.mdb
+*.accdb

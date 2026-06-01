@@ -9,7 +9,7 @@ Description:
 
 Purpose:
     Runs lint, tests, boundary validations, storage checks, OneC I/O checks,
-    v0.4 fixture checks, and generates terminal, JSON, and Markdown reports.
+    v0.5 parser/pipeline/fixture checks, and generates terminal, JSON, and Markdown reports.
 """
 
 from __future__ import annotations
@@ -54,6 +54,22 @@ REQUIRED_BOUNDARY_FILES = [
     "contracts/placeholders/accounting.payment_status_reference.v1.yaml",
     "contracts/placeholders/accounting.finance_summary.v1.yaml",
     "contracts/placeholders/accounting.one_c_import_result.v1.yaml",
+]
+
+REQUIRED_V05_FILES = [
+    "app/forprint_accounting_registry_service/one_c_io/sanitization.py",
+    "app/forprint_accounting_registry_service/one_c_io/test_database_registry.py",
+    "app/forprint_accounting_registry_service/one_c_io/file_formats.py",
+    "app/forprint_accounting_registry_service/one_c_io/export_detection.py",
+    "app/forprint_accounting_registry_service/one_c_io/export_parsers.py",
+    "app/forprint_accounting_registry_service/one_c_io/schema_probe.py",
+    "app/forprint_accounting_registry_service/one_c_io/import_pipeline.py",
+    "app/forprint_accounting_registry_service/storage/mapping_models.py",
+    "app/forprint_accounting_registry_service/repositories/mapping_issues.py",
+    "app/forprint_accounting_registry_service/services/mapping_issue_registry.py",
+    "scripts/one_c_discover_source.py",
+    "scripts/one_c_parse_export.py",
+    "scripts/one_c_run_import_pipeline.py",
 ]
 
 REQUIRED_MANIFEST_OWNS = {
@@ -113,8 +129,16 @@ SANITIZED_FIXTURE_FILES = [
     "examples/one_c/write_experiments/write_experiment_example.yaml",
 ]
 
+TEST_FIXTURE_FILES = [
+    "tests/fixtures/one_c/exports/counterparties.json",
+    "tests/fixtures/one_c/exports/counterparties.csv",
+    "tests/fixtures/one_c/exports/counterparties.xml",
+    "tests/fixtures/one_c/exports/payment_register.yaml",
+]
+
 REQUIRED_GITIGNORE_PATTERNS = [
     "local_sandbox/",
+    "local_sandbox/one_c_working_copies/",
     "*.1CD",
     "*.dt",
     "*.cf",
@@ -163,18 +187,18 @@ def run_subprocess_check(name: str, expected: str, command: list[str]) -> CheckR
     )
 
 
-def validate_boundary_files() -> CheckResult:
-    """Validate that required boundary/storage/OneC docs exist."""
+def validate_required_files(name: str, expected: str, files: list[str]) -> CheckResult:
+    """Validate list of required files."""
     started_at = time.perf_counter()
     missing = [
-        relative_path
-        for relative_path in REQUIRED_BOUNDARY_FILES
-        if not (PROJECT_ROOT / relative_path).exists()
+            relative_path 
+            for relative_path in files 
+            if not (PROJECT_ROOT / relative_path).exists()
     ]
 
     return CheckResult(
-        name="Boundary, storage and OneC files",
-        expected="Boundary docs, storage docs, OneC docs, manifest and placeholders exist",
+        name=name,
+        expected=expected,
         status="OK" if not missing else "FAIL",
         duration_seconds=time.perf_counter() - started_at,
         details=", ".join(missing),
@@ -332,10 +356,19 @@ def validate_fixture_safety() -> CheckResult:
 
     return CheckResult(
         name="Fixture safety validation",
-        expected="Committed fixtures are sanitized, examples and non-production",
+        expected="Committed examples are sanitized, examples and non-production",
         status="OK" if not errors else "FAIL",
         duration_seconds=time.perf_counter() - started_at,
         details="; ".join(errors),
+    )
+
+
+def validate_test_fixtures_exist() -> CheckResult:
+    """Validate parser/import test fixtures exist."""
+    return validate_required_files(
+        name="v0.5 test fixture validation",
+        expected="Sanitized parser/import fixtures exist",
+        files=TEST_FIXTURE_FILES,
     )
 
 
@@ -456,12 +489,22 @@ def run_all_checks() -> list[CheckResult]:
             expected="Усі тести проходять",
             command=[sys.executable, "-m", "pytest", "-q"],
         ),
-        validate_boundary_files(),
+        validate_required_files(
+            name="Boundary, storage and OneC files",
+            expected="Boundary docs, storage docs, OneC docs, manifest and placeholders exist",
+            files=REQUIRED_BOUNDARY_FILES,
+        ),
+        validate_required_files(
+            name="v0.5 implementation files",
+            expected="Sanitized source intake, export parser and pipeline files exist",
+            files=REQUIRED_V05_FILES,
+        ),
         validate_module_manifest(),
         validate_placeholder_contracts(),
         validate_no_forbidden_storage_models(),
         validate_one_c_io_boundary(),
         validate_fixture_safety(),
+        validate_test_fixtures_exist(),
         validate_gitignore_sandbox_rules(),
     ]
 

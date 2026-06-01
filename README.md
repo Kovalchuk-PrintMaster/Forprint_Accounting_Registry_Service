@@ -211,3 +211,47 @@ Library contract registry integration.
 Current approved v0.4 direction:
 
 Accounting Registry v0.4 — OneC Sandbox Direct I/O, Report Extraction and Directory Exchange Pack
+
+## v0.5 sanitized OneC test DB and export parser pack
+
+Current approved v0.5 direction:
+
+```text
+Accounting Registry v0.5 — Real Sanitized OneC Test DB and Export Parser Pack
+
+This is still offline and sandbox/test-data only.
+
+Added v0.5 concepts:
+
+sanitized test database source intake;
+source checksum recording;
+working copy manifest;
+graceful unsupported schema probe;
+manual/file export parser for JSON, CSV, XML, YAML and TXT tabular dump;
+parsed export to staging records;
+mapping issue persistence;
+offline import pipeline;
+practical accounting directory import;
+practical accounting report extraction;
+hardened sandbox write safety;
+safe developer smoke scripts.
+
+Still forbidden:
+
+live 1C connection;
+live 1C write;
+production direct DB write;
+production synchronization;
+automatic posting;
+real Gateway integration;
+real CRM integration;
+real Operational Registry integration;
+real Library integration;
+real Calculator integration;
+real Warehouse integration;
+canonical client registry;
+canonical order registry;
+canonical product/material catalog;
+full 1C mirror.
+
+---

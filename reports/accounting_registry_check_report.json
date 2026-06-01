@@ -7,63 +7,77 @@
       "name": "Ruff lint",
       "expected": "Немає lint-помилок у app/tests/scripts",
       "status": "OK",
-      "duration_seconds": 0.03742747497744858,
+      "duration_seconds": 0.03055093900184147,
       "details": ""
     },
     {
       "name": "Pytest",
       "expected": "Усі тести проходять",
       "status": "OK",
-      "duration_seconds": 1.4755631720181555,
+      "duration_seconds": 1.7454681519993756,
       "details": ""
     },
     {
       "name": "Boundary, storage and OneC files",
       "expected": "Boundary docs, storage docs, OneC docs, manifest and placeholders exist",
       "status": "OK",
-      "duration_seconds": 0.00033591408282518387,
+      "duration_seconds": 0.0006935580022400245,
+      "details": ""
+    },
+    {
+      "name": "v0.5 implementation files",
+      "expected": "Sanitized source intake, export parser and pipeline files exist",
+      "status": "OK",
+      "duration_seconds": 0.00035968700103694573,
       "details": ""
     },
     {
       "name": "Module manifest validation",
       "expected": "Manifest declares accounting role, owns, and must_not_own",
       "status": "OK",
-      "duration_seconds": 0.005474031902849674,
+      "duration_seconds": 0.012048713000694988,
       "details": ""
     },
     {
       "name": "Placeholder contract validation",
       "expected": "Local contracts are placeholders and non-canonical",
       "status": "OK",
-      "duration_seconds": 0.015507743926718831,
+      "duration_seconds": 0.015392054003314115,
       "details": ""
     },
     {
       "name": "Storage model boundary validation",
       "expected": "No canonical Client/Order/Product/Material/Warehouse/Production models",
       "status": "OK",
-      "duration_seconds": 0.00017264694906771183,
+      "duration_seconds": 0.0001730779986246489,
       "details": ""
     },
     {
       "name": "OneC I/O boundary validation",
       "expected": "No canonical Client/Order/Product/Material/Warehouse/Production models",
       "status": "OK",
-      "duration_seconds": 0.0017531930934637785,
+      "duration_seconds": 0.0024272189984912984,
       "details": ""
     },
     {
       "name": "Fixture safety validation",
-      "expected": "Committed fixtures are sanitized, examples and non-production",
+      "expected": "Committed examples are sanitized, examples and non-production",
       "status": "OK",
-      "duration_seconds": 0.007510925177484751,
+      "duration_seconds": 0.007495976002246607,
+      "details": ""
+    },
+    {
+      "name": "v0.5 test fixture validation",
+      "expected": "Sanitized parser/import fixtures exist",
+      "status": "OK",
+      "duration_seconds": 0.00014491199908661656,
       "details": ""
     },
     {
       "name": "Gitignore sandbox validation",
       "expected": "local_sandbox and DB-like files are ignored",
       "status": "OK",
-      "duration_seconds": 0.00012941798195242882,
+      "duration_seconds": 0.0001415109982190188,
       "details": ""
     }
   ]

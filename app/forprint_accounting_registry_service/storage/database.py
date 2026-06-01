@@ -2,7 +2,7 @@
 Storage database helpers.
 
 Purpose:
-    Lightweight local SQLModel/SQLite foundation for Accounting Registry v0.2.
+    Lightweight local SQLModel/SQLite foundation for Accounting Registry.
 
 Boundary:
     This is not a production DB strategy.
@@ -10,9 +10,13 @@ Boundary:
 """
 
 from pathlib import Path
+from typing import Any
 
 from sqlmodel import Session, SQLModel, create_engine
 
+from forprint_accounting_registry_service.storage import (
+    mapping_models as _mapping_models,  # noqa: F401
+)
 from forprint_accounting_registry_service.storage import models as _storage_models  # noqa: F401
 
 DEFAULT_SQLITE_PATH = Path("data/accounting_registry.sqlite3")
@@ -23,7 +27,7 @@ def build_sqlite_url(db_path: Path) -> str:
     return f"sqlite:///{db_path}"
 
 
-def create_sqlite_engine(db_path: Path | str = ":memory:"):
+def create_sqlite_engine(db_path: Path | str = ":memory:") -> Any:
     """Create SQLite engine for test/local usage."""
     if str(db_path) == ":memory:":
         return create_engine("sqlite:///:memory:")
@@ -33,11 +37,11 @@ def create_sqlite_engine(db_path: Path | str = ":memory:"):
     return create_engine(build_sqlite_url(path))
 
 
-def init_storage(engine) -> None:
+def init_storage(engine: Any) -> None:
     """Create all Accounting Registry storage tables."""
     SQLModel.metadata.create_all(engine)
 
 
-def create_session(engine) -> Session:
+def create_session(engine: Any) -> Session:
     """Create SQLModel session."""
     return Session(engine)
