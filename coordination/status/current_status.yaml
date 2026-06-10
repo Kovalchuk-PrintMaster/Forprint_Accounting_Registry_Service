@@ -1,0 +1,30 @@
+module_name: forprint_accounting_registry_service
+module_status: active
+priority: high
+current_phase: governance_alignment_v0_1
+last_completed_step: accounting_registry_v0_5_accepted
+last_updated: "{now}"
+branch: {branch}
+last_commit: {commit}
+
+checks:
+  make_check: pending
+  make_check_report: pending
+  governance_check: pending
+
+boundary:
+  no_foreign_ownership: true
+  no_production_api: true
+  no_live_write: true
+  no_real_integrations: true
+
+boundaries:
+  no_live_1c_integration: true
+  no_production_write: true
+  no_automatic_posting: true
+  sandbox_import_export_only: true
+
+validation:
+  governance_alignment: pending
+
+recommended_next_step: maintain_v0_5_until_sanitized_1c_samples

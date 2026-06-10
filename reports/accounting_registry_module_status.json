@@ -1,0 +1,6 @@
+{
+  "module_name": "forprint_accounting_registry_service",
+  "module_status": "active",
+  "current_phase": "governance_alignment_v0_1",
+  "boundary": "sandbox_import_export_only_no_live_1c_write"
+}
