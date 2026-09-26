@@ -1,0 +1,73 @@
+schema_version: forprint_accounting_registry_service_clean_packet_index_v0_2
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: CLEAN_PACKETS_READY_FOR_SEMANTIC_ANALYSIS
+supersedes_for_semantic_analysis: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets
+preserves_v0_1_as_provenance: true
+clean_current_corpus:
+  file_count: 392
+  text_file_count: 137
+  total_bytes: 429418
+  aggregate_sha256: f0ce481fcb52716b9b6386d799d0a17cd9721b36fb658923e169120b65f79b04
+excluded_generated_environment:
+  file_count: 6686
+  total_bytes: 193824767
+  aggregate_sha256: e7172bbd0c14e2f0d12e7a30417bd9b122ee6470bf152f2aae6918e5457e119b
+tmp_provenance:
+  file_count: 698
+  total_bytes: 29972889
+  aggregate_sha256: 2bcb955d2dd4bc2d24646c212d591b13fe50383c09a4cc997d84d0690500cdb7
+git_status:
+  schema_version: forprint_accounting_registry_service_git_status_classification_v0_2
+  raw_path_count: 3
+  non_tmp_dirty_path_count: 0
+  non_tmp_dirty_paths: []
+  tmp_or_operator_dirty_path_count: 3
+  tmp_or_operator_dirty_paths:
+  - status: ' D'
+    path: tmp/one_c_raw/.gitkeep
+    old_path: null
+  - status: ' D'
+    path: tmp/one_c_staging/.gitkeep
+    old_path: null
+  - status: ??
+    path: tmp.py
+    old_path: null
+  parser_fix: git stdout parsed with splitlines() without global strip()
+packets:
+  A:
+    packet_id: A_identity_history_documentation_lineage
+    module_source_count: 32
+    blueprint_context_count: 25
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/A_identity_history_documentation_lineage/packet.md
+    packet_md_size_bytes: 681211
+    packet_md_sha256: d0be22050f7271591d5c64549dcc5702b9a892f591d979534a86469c559b8a3a
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/A_identity_history_documentation_lineage/manifest.yaml
+  B:
+    packet_id: B_domain_runtime_business_capabilities
+    module_source_count: 114
+    blueprint_context_count: 13
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/B_domain_runtime_business_capabilities/packet.md
+    packet_md_size_bytes: 606699
+    packet_md_sha256: ad8cbf62e40f4b0352993bac0229dc2ad8dc2ddca79e630548d09a5319b58184
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/B_domain_runtime_business_capabilities/manifest.yaml
+  C:
+    packet_id: C_ownership_contracts_integrations
+    module_source_count: 51
+    blueprint_context_count: 15
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/C_ownership_contracts_integrations/packet.md
+    packet_md_size_bytes: 468650
+    packet_md_sha256: 16fc4bf507cb4143f785b350ccff74db35e3a453018a6517708bb27c2e3a0264
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/C_ownership_contracts_integrations/manifest.yaml
+  D:
+    packet_id: D_governance_validation_operator_security_recovery
+    module_source_count: 86
+    blueprint_context_count: 16
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/D_governance_validation_operator_security_recovery/packet.md
+    packet_md_size_bytes: 562282
+    packet_md_sha256: dd767345648f5556fa8923a8138c4a99c528037ad5e503a501bbcdfb9f6451dc
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/D_governance_validation_operator_security_recovery/manifest.yaml
+authority:
+  analysis_only: true
+  action_now: none
+next_action: ANALYZE_CLEAN_PACKETS_A_B_C_D

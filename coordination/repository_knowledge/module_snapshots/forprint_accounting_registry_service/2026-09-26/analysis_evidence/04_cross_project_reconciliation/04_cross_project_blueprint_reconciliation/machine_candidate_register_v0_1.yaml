@@ -1,0 +1,46 @@
+schema_version: forprint_accounting_registry_service_machine_candidate_register_v0_1
+module_id: forprint_accounting_registry_service
+status: ALL_DEFERRED_OR_NO_CHANGE
+candidates:
+- candidate_id: ACC-M01
+  surface: machine/contracts.yaml + machine/data_flows.yaml
+  observed: accounting_to_crm_financial_status.v1 and accounting_financial_status_to_crm are active_development
+  audit_fact: Accounting module exposes no live cross-module runtime beyond local health/sandbox surfaces.
+  disposition: DEFERRED_RECONCILE_BEFORE_IMPLEMENTATION
+  canonical_mutation_now: false
+  reason: A one-module audit cannot safely redefine project-wide meaning of active_development.
+- candidate_id: ACC-M02
+  surface: machine/modules.yaml + machine/ownership.yaml + machine/data_objects.yaml
+  observed: invoice/payment/accounting_document/one_c_sync_event ownership is assigned to Accounting
+  audit_fact: Current implementation maturity for invoice/payment lifecycle is partial/reference-shell level.
+  disposition: KEEP_OWNERSHIP_DEFER_MATURITY_RECONCILIATION
+  canonical_mutation_now: false
+  reason: Implementation incompleteness does not prove ownership assignment is wrong.
+- candidate_id: ACC-M03
+  surface: contract authority model
+  observed: module-local historical surfaces still name Library as future canonical contract truth
+  audit_fact: Blueprint portfolio now contains forprint_contract_registry for versioned inter-module contracts
+  disposition: MODULE_LOCAL_REMEDIATION_LATER_BLUEPRINT_NO_MACHINE_CHANGE_NOW
+  canonical_mutation_now: false
+  reason: Blueprint direction is already newer; local module references need future bounded reconciliation.
+- candidate_id: ACC-M04
+  surface: module identity references
+  observed: module-local surfaces retain forprint_operational_registry aliases
+  audit_fact: Blueprint canonical identity is forprint_operations_control_registry
+  disposition: MODULE_LOCAL_REMEDIATION_LATER
+  canonical_mutation_now: false
+  reason: Machine identity is already canonical.
+- candidate_id: ACC-M05
+  surface: 1C capability/currentness representation
+  observed: machine target objects/flows can be read more broadly than current sandbox implementation
+  audit_fact: real live 1C connector/direct database/write/sync capability is absent
+  disposition: ROADMAP_CURRENTNESS_REFINEMENT_ONLY
+  canonical_mutation_now: false
+  reason: Roadmap is the safer surface for maturity clarification until machine currentness schema is explicitly designed.
+- candidate_id: ACC-M06
+  surface: party/catalog references
+  observed: module has generic Counterparty/Product projections with foreign-domain fields
+  audit_fact: Blueprint expects stable Business Partner and Library/Operations/CRM domain boundaries
+  disposition: DEFERRED_CROSS_MODULE_IDENTITY_AND_REFERENCE_RECONCILIATION
+  canonical_mutation_now: false
+  reason: No single-module mutation should invent the canonical Business Partner/reference model.

@@ -1,0 +1,54 @@
+schema_version: forprint_accounting_registry_service_deferred_module_remediation_candidates_v0_1
+module_id: forprint_accounting_registry_service
+status: DEFERRED_NO_IMPLEMENTATION_IN_L0
+candidates:
+- candidate_id: ACC-LOCAL-01
+  class: module_semantic_reconciliation
+  issue: generic Counterparty/Product models contain cross-domain semantics
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-02
+  class: validator_semantic_coverage
+  issue: boundary validator does not cover models/ generic projection surfaces
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-03
+  class: identity_alias_reconciliation
+  issue: historical forprint_operational_registry references remain in manifest/contracts
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-04
+  class: contract_authority_reconciliation
+  issue: local canonical_contract_truth still points to Library instead of current Contract Registry direction
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-05
+  class: sandbox_write_semantics
+  issue: applied=true may represent authorization/simulation rather than an executed write
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-06
+  class: source_provenance_security
+  issue: validated source is not strongly bound to export_path and snapshot hash is not populated by pipeline
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-07
+  class: external_input_trust
+  issue: sanitization trusts declared metadata and parser defaults within controlled sandbox
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-08
+  class: status_generation
+  issue: current_status contains literal placeholders and stale/pending verification semantics
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-09
+  class: operator_surface_side_effect
+  issue: governance-check invokes potentially mutating blueprint-pull/status-report
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-10
+  class: placeholder_and_unwired_surface
+  issue: empty placeholders and typed but unwired mapping diagnostic storage must not be counted as active capability
+  priority: medium
+  action_now: none

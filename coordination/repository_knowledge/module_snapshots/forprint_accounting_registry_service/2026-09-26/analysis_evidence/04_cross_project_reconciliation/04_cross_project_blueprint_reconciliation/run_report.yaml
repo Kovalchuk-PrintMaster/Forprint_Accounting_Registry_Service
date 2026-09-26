@@ -1,0 +1,27 @@
+schema_version: forprint_accounting_registry_service_l0_cross_project_reconciliation_run_v0_1
+status: PASS_RECONCILIATION_READY_FOR_BOUNDED_CANONICAL_PREVIEW
+completed_at_utc: '2026-09-26T20:03:13.976303+00:00'
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+audit_finding_count: 16
+roadmap_existing_step_refinement_count: 8
+new_roadmap_step_id_count: 0
+machine_candidate_count: 6
+machine_mutation_recommended_now: false
+deferred_module_remediation_candidate_count: 10
+methodology_improvement_candidate_count: 4
+approval_state_changes: 0
+execution_authority_changes: 0
+source_basis_changes: 0
+H05_unchanged: true
+H08_unchanged: true
+preexisting_non_tmp_worktree_unchanged: true
+safety:
+  accounting_source_mutated: false
+  blueprint_mutated: false
+  roadmap_mutated: false
+  machine_mutated: false
+  human_intent_mutated: false
+  module_policy_mutated: false
+  git_stage_commit_push_performed: false
+next_action: BUILD_EXACT_BOUNDED_CANONICAL_ENRICHMENT_PREVIEW

@@ -1,0 +1,23 @@
+schema_version: forprint_accounting_registry_service_related_module_snapshots_v0_1
+module_id: forprint_accounting_registry_service
+snapshot_date: '2026-09-26'
+related_modules:
+- module_id: forprint_operations_control_registry
+  relationship: operational_truth_and_accounting_fact_boundary
+  status: knowledge_snapshot_already_registered_in_blueprint
+- module_id: forprint_library
+  relationship: catalog_material_identity_and_supplier_alias_target_boundary
+  status: knowledge_snapshot_already_registered_in_blueprint
+- module_id: forprint_contract_registry
+  relationship: future_versioned_inter_module_contract_authority_dependency
+  status: roadmap_dependency_only_in_this_snapshot
+- module_id: forprint_integration_gateway
+  relationship: future_routed_runtime_integration_dependency
+  status: roadmap_dependency_only_in_this_snapshot
+- module_id: warehouse_service
+  relationship: future_goods_receipt_and_stock_boundary
+  status: dependency
+- module_id: calculator_engine
+  relationship: pricing_semantics_boundary
+  status: dependency
+action_now: none

@@ -1,0 +1,10 @@
+schema_version: forprint_module_analysis_index_v0_1
+snapshots:
+- module_id: forprint_accounting_registry_service
+  snapshot_date: '2026-09-26'
+  source_commit: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+  snapshot_manifest: coordination/repository_knowledge/module_snapshots/forprint_accounting_registry_service/2026-09-26/snapshot_manifest.yaml
+  human_snapshot: coordination/reports/analysis/2026-09-26__forprint_accounting_registry_service__module_snapshot_v0_1.md
+  roadmap_rebuild_input: coordination/reports/analysis/2026-09-26__forprint_accounting_registry_service__roadmap_rebuild_input_v0_1.yaml
+  status: DURABLE_MODULE_SNAPSHOT_READY_FOR_COMMIT
+  snapshot_manifest_sha256: df7239651c4a277d667712befb0c7a0c0d4f5fca409081a53ecf1c9f0ae3756f

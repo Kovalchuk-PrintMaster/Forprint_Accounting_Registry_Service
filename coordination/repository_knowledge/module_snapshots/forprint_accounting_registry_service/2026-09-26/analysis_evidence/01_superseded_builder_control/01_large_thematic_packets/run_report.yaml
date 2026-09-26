@@ -1,0 +1,64 @@
+schema_version: forprint_accounting_registry_service_l0_large_thematic_packet_builder_run_v0_1
+status: PASS_ALL_THEMATIC_PACKETS_READY_FOR_SEMANTIC_ANALYSIS
+completed_at_utc: '2026-09-26T19:33:52.657068+00:00'
+module_id: forprint_accounting_registry_service
+head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+entry_preflight_repository_file_count: 4260
+entry_preflight_repository_total_bytes: 149636689
+current_non_tmp_file_count: 4256
+current_non_tmp_total_bytes: 149636689
+tmp_provenance_file_count: 54
+tmp_provenance_total_bytes: 4191747
+non_tmp_dirty_path_count: 1
+non_tmp_dirty_paths:
+- status: 'D '
+  path: mp/one_c_raw/.gitkeep
+  old_path: null
+packet_summary:
+  A:
+    packet_id: A_identity_history_documentation_lineage
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/A_identity_history_documentation_lineage/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/A_identity_history_documentation_lineage/manifest.yaml
+    selected_source_count: 120
+    selected_blueprint_context_count: 35
+    relevant_candidate_count: 705
+    packet_md_size_bytes: 2539489
+    packet_md_sha256: 02f5ac2e4b2cd3461ba7e0513c32bf43addc39bff4a0ba579316be59150169de
+  B:
+    packet_id: B_domain_runtime_business_capabilities
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/B_domain_runtime_business_capabilities/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/B_domain_runtime_business_capabilities/manifest.yaml
+    selected_source_count: 180
+    selected_blueprint_context_count: 9
+    relevant_candidate_count: 4256
+    packet_md_size_bytes: 2561314
+    packet_md_sha256: cb08405f6e00f88730d71d7eac81c9c51c5f707e6ab7e82077c666c08ff2a032
+  C:
+    packet_id: C_ownership_contracts_integrations
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/C_ownership_contracts_integrations/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/C_ownership_contracts_integrations/manifest.yaml
+    selected_source_count: 140
+    selected_blueprint_context_count: 13
+    relevant_candidate_count: 1161
+    packet_md_size_bytes: 2556153
+    packet_md_sha256: 68023132296376b1d30051e9219f234308d76f85858effe2ad2c090dcb906fff
+  D:
+    packet_id: D_governance_validation_operator_security_recovery
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/D_governance_validation_operator_security_recovery/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/D_governance_validation_operator_security_recovery/manifest.yaml
+    selected_source_count: 180
+    selected_blueprint_context_count: 13
+    relevant_candidate_count: 1437
+    packet_md_size_bytes: 2558882
+    packet_md_sha256: 47da61b399d9b433dcbc3cb014ec4edb96db8c9abe919843f3a22a8cb10ce642
+safety:
+  source_mutated: false
+  blueprint_mutated: false
+  roadmap_mutated: false
+  machine_mutated: false
+  tests_run: false
+  make_run: false
+  validators_run: false
+  generators_run: false
+  git_stage_commit_push_performed: false
+next_action: UPLOAD_PACKET_MD_FILES_FOR_SEMANTIC_ANALYSIS

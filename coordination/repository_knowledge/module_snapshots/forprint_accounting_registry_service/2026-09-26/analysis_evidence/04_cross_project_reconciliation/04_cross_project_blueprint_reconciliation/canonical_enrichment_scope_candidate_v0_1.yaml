@@ -1,0 +1,45 @@
+schema_version: forprint_accounting_registry_service_l0_canonical_enrichment_scope_candidate_v0_1
+module_id: forprint_accounting_registry_service
+status: READY_FOR_BOUNDED_PREVIEW_NOT_AUTHORIZED_FOR_APPLY
+action_now: preview_only
+target_files:
+- coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.md
+- coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.yaml
+- coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.md
+- coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.yaml
+allowed_change_classes:
+- existing_accounting_step_text_refinement
+- existing_accounting_dependency_gate_refinement
+- accounting_module_dependencies_or_inputs_refinement_if_required_for_consistency
+forbidden_change_classes:
+- new_roadmap_step_ids
+- approval_state_changes
+- execution_authority_changes
+- source_basis_changes
+- H05_semantic_change
+- H08_semantic_change
+- non_accounting_module_step_changes
+- machine_mutation
+- human_intent_mutation
+- module_policy_mutation
+- current_execution_focus_mutation
+- CF10_mutation
+roadmap_refinement_candidate_count: 8
+target_step_ids:
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+unchanged_step_ids:
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H05
+- FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H08
+proposed_dependency_additions:
+- forprint_contract_registry
+- forprint_integration_gateway
+machine_candidate_disposition: ALL_DEFERRED_OR_NO_CHANGE
+machine_mutation_allowed: false
+next_action: BUILD_EXACT_BOUNDED_CANONICAL_ENRICHMENT_PREVIEW

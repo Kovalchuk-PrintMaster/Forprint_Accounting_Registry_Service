@@ -1,0 +1,145 @@
+schema_version: forprint_accounting_registry_service_roadmap_rebuild_input_v0_1
+module_id: forprint_accounting_registry_service
+snapshot_date: '2026-09-26'
+source_commit: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: CURRENT_L0_RECONCILIATION_CAPTURED
+current_baseline: v0_5_sanitized_one_c_sandbox_import_staging_foundation
+blueprint_roadmap_closeout:
+  commit: b1ad17aa9d81e886a6f03c691f9d277740db47ad
+  branch: audit/blueprint-inventory-refresh-2026-07-29
+  remote_contained: true
+roadmap_reconciliation:
+  existing_step_refinement_count: 8
+  refined_step_ids:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  unchanged_step_ids:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H05
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H08
+  new_step_id_count: 0
+  dependency_additions:
+  - forprint_contract_registry
+  - forprint_integration_gateway
+  approval_state_changes: 0
+  source_basis_changes: 0
+  execution_authority_changes: 0
+deferred_machine_candidates:
+- candidate_id: ACC-M01
+  surface: machine/contracts.yaml + machine/data_flows.yaml
+  observed: accounting_to_crm_financial_status.v1 and accounting_financial_status_to_crm are active_development
+  audit_fact: Accounting module exposes no live cross-module runtime beyond local health/sandbox surfaces.
+  disposition: DEFERRED_RECONCILE_BEFORE_IMPLEMENTATION
+  canonical_mutation_now: false
+  reason: A one-module audit cannot safely redefine project-wide meaning of active_development.
+- candidate_id: ACC-M02
+  surface: machine/modules.yaml + machine/ownership.yaml + machine/data_objects.yaml
+  observed: invoice/payment/accounting_document/one_c_sync_event ownership is assigned to Accounting
+  audit_fact: Current implementation maturity for invoice/payment lifecycle is partial/reference-shell level.
+  disposition: KEEP_OWNERSHIP_DEFER_MATURITY_RECONCILIATION
+  canonical_mutation_now: false
+  reason: Implementation incompleteness does not prove ownership assignment is wrong.
+- candidate_id: ACC-M03
+  surface: contract authority model
+  observed: module-local historical surfaces still name Library as future canonical contract truth
+  audit_fact: Blueprint portfolio now contains forprint_contract_registry for versioned inter-module contracts
+  disposition: MODULE_LOCAL_REMEDIATION_LATER_BLUEPRINT_NO_MACHINE_CHANGE_NOW
+  canonical_mutation_now: false
+  reason: Blueprint direction is already newer; local module references need future bounded reconciliation.
+- candidate_id: ACC-M04
+  surface: module identity references
+  observed: module-local surfaces retain forprint_operational_registry aliases
+  audit_fact: Blueprint canonical identity is forprint_operations_control_registry
+  disposition: MODULE_LOCAL_REMEDIATION_LATER
+  canonical_mutation_now: false
+  reason: Machine identity is already canonical.
+- candidate_id: ACC-M05
+  surface: 1C capability/currentness representation
+  observed: machine target objects/flows can be read more broadly than current sandbox implementation
+  audit_fact: real live 1C connector/direct database/write/sync capability is absent
+  disposition: ROADMAP_CURRENTNESS_REFINEMENT_ONLY
+  canonical_mutation_now: false
+  reason: Roadmap is the safer surface for maturity clarification until machine currentness schema is explicitly designed.
+- candidate_id: ACC-M06
+  surface: party/catalog references
+  observed: module has generic Counterparty/Product projections with foreign-domain fields
+  audit_fact: Blueprint expects stable Business Partner and Library/Operations/CRM domain boundaries
+  disposition: DEFERRED_CROSS_MODULE_IDENTITY_AND_REFERENCE_RECONCILIATION
+  canonical_mutation_now: false
+  reason: No single-module mutation should invent the canonical Business Partner/reference model.
+deferred_module_remediation_candidates:
+- candidate_id: ACC-LOCAL-01
+  class: module_semantic_reconciliation
+  issue: generic Counterparty/Product models contain cross-domain semantics
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-02
+  class: validator_semantic_coverage
+  issue: boundary validator does not cover models/ generic projection surfaces
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-03
+  class: identity_alias_reconciliation
+  issue: historical forprint_operational_registry references remain in manifest/contracts
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-04
+  class: contract_authority_reconciliation
+  issue: local canonical_contract_truth still points to Library instead of current Contract Registry direction
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-05
+  class: sandbox_write_semantics
+  issue: applied=true may represent authorization/simulation rather than an executed write
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-06
+  class: source_provenance_security
+  issue: validated source is not strongly bound to export_path and snapshot hash is not populated by pipeline
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-07
+  class: external_input_trust
+  issue: sanitization trusts declared metadata and parser defaults within controlled sandbox
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-08
+  class: status_generation
+  issue: current_status contains literal placeholders and stale/pending verification semantics
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-09
+  class: operator_surface_side_effect
+  issue: governance-check invokes potentially mutating blueprint-pull/status-report
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-10
+  class: placeholder_and_unwired_surface
+  issue: empty placeholders and typed but unwired mapping diagnostic storage must not be counted as active capability
+  priority: medium
+  action_now: none
+methodology_improvement_candidates:
+- candidate_id: METH-ACC-01
+  problem: Initial preflight included virtualenv dependency tree and distorted semantic source counts.
+  proposal: Standard L0 inventory must exclude all recognized virtualenv/generated package metadata before semantic segmentation.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-02
+  problem: v0.1 porcelain parser stripped the leading status space of first Git record.
+  proposal: Preserve raw leading spaces when parsing git status --porcelain and test staged/unstaged/deleted/untracked cases.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-03
+  problem: v0.2 clean-current archive still captured .git metadata/object files although semantic packet selection did not use them.
+  proposal: Exclude .git from inventory/archive corpus itself, not only from semantic packet selection; report semantic module file count separately from transport/provenance metadata.
+  already_applied_locally_to_analysis: false
+- candidate_id: METH-ACC-04
+  problem: A green validator can hide semantic blind spots when it checks only selected directories.
+  proposal: L0 semantic audit should compare validator coverage scope against actual risky semantic surfaces and record validator-semantic gaps.
+  already_applied_locally_to_analysis: true
+action_now: none
+implementation_authority_created: false
+next_use: future portfolio/currentness reconciliation and later authorized implementation contours

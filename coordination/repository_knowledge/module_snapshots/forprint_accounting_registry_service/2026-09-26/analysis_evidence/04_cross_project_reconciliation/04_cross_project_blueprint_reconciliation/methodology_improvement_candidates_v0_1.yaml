@@ -1,0 +1,20 @@
+schema_version: forprint_accounting_registry_service_methodology_improvement_candidates_v0_1
+module_id: forprint_accounting_registry_service
+status: CANDIDATES_NOT_CANONICAL_MUTATION
+candidates:
+- candidate_id: METH-ACC-01
+  problem: Initial preflight included virtualenv dependency tree and distorted semantic source counts.
+  proposal: Standard L0 inventory must exclude all recognized virtualenv/generated package metadata before semantic segmentation.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-02
+  problem: v0.1 porcelain parser stripped the leading status space of first Git record.
+  proposal: Preserve raw leading spaces when parsing git status --porcelain and test staged/unstaged/deleted/untracked cases.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-03
+  problem: v0.2 clean-current archive still captured .git metadata/object files although semantic packet selection did not use them.
+  proposal: Exclude .git from inventory/archive corpus itself, not only from semantic packet selection; report semantic module file count separately from transport/provenance metadata.
+  already_applied_locally_to_analysis: false
+- candidate_id: METH-ACC-04
+  problem: A green validator can hide semantic blind spots when it checks only selected directories.
+  proposal: L0 semantic audit should compare validator coverage scope against actual risky semantic surfaces and record validator-semantic gaps.
+  already_applied_locally_to_analysis: true

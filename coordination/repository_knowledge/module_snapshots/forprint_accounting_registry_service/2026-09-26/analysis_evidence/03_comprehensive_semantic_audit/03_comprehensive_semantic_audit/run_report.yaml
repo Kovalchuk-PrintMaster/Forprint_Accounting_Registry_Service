@@ -1,0 +1,29 @@
+schema_version: forprint_accounting_registry_service_l0_comprehensive_semantic_audit_run_v0_1
+status: PASS_COMPREHENSIVE_AUDIT_WITH_RECONCILIATION_REQUIRED
+completed_at_utc: '2026-09-26T19:56:42.227630+00:00'
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+finding_count: 16
+roadmap_candidate_count: 8
+machine_candidate_count: 6
+methodology_improvement_candidate_count: 4
+preexisting_non_tmp_worktree_unchanged: true
+safety:
+  source_mutated: false
+  blueprint_mutated: false
+  roadmap_mutated: false
+  machine_mutated: false
+  tests_run: false
+  make_run: false
+  validators_run: false
+  git_stage_commit_push_performed: false
+outputs:
+  markdown:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/03_comprehensive_semantic_audit/comprehensive_semantic_audit_v0_1.md
+    sha256: aa74d907242ad25cae8828897c9558022c45ca423f03f60cf1d6863b1b579259
+    size_bytes: 19759
+  yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/03_comprehensive_semantic_audit/comprehensive_semantic_audit_v0_1.yaml
+    sha256: a21f463c4fa07039629028305adf6579e294e5c10926d82a10924886586cf8a0
+    size_bytes: 33050
+next_action: BUILD_CROSS_PROJECT_BLUEPRINT_RECONCILIATION_PACKET

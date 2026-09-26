@@ -1,0 +1,57 @@
+schema_version: forprint_accounting_registry_service_clean_packet_builder_run_v0_2
+status: PASS_CLEAN_PACKETS_READY_FOR_SEMANTIC_ANALYSIS
+completed_at_utc: '2026-09-26T19:42:10.986821+00:00'
+module_id: forprint_accounting_registry_service
+head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+clean_current_file_count: 392
+clean_current_text_file_count: 137
+clean_current_total_bytes: 429418
+excluded_generated_environment_file_count: 6686
+excluded_generated_environment_total_bytes: 193824767
+tmp_provenance_file_count: 698
+non_tmp_dirty_path_count: 0
+tmp_or_operator_dirty_path_count: 3
+packets:
+  A:
+    packet_id: A_identity_history_documentation_lineage
+    module_source_count: 32
+    blueprint_context_count: 25
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/A_identity_history_documentation_lineage/packet.md
+    packet_md_size_bytes: 681211
+    packet_md_sha256: d0be22050f7271591d5c64549dcc5702b9a892f591d979534a86469c559b8a3a
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/A_identity_history_documentation_lineage/manifest.yaml
+  B:
+    packet_id: B_domain_runtime_business_capabilities
+    module_source_count: 114
+    blueprint_context_count: 13
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/B_domain_runtime_business_capabilities/packet.md
+    packet_md_size_bytes: 606699
+    packet_md_sha256: ad8cbf62e40f4b0352993bac0229dc2ad8dc2ddca79e630548d09a5319b58184
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/B_domain_runtime_business_capabilities/manifest.yaml
+  C:
+    packet_id: C_ownership_contracts_integrations
+    module_source_count: 51
+    blueprint_context_count: 15
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/C_ownership_contracts_integrations/packet.md
+    packet_md_size_bytes: 468650
+    packet_md_sha256: 16fc4bf507cb4143f785b350ccff74db35e3a453018a6517708bb27c2e3a0264
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/C_ownership_contracts_integrations/manifest.yaml
+  D:
+    packet_id: D_governance_validation_operator_security_recovery
+    module_source_count: 86
+    blueprint_context_count: 16
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/D_governance_validation_operator_security_recovery/packet.md
+    packet_md_size_bytes: 562282
+    packet_md_sha256: dd767345648f5556fa8923a8138c4a99c528037ad5e503a501bbcdfb9f6451dc
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/D_governance_validation_operator_security_recovery/manifest.yaml
+safety:
+  source_mutated: false
+  blueprint_mutated: false
+  roadmap_mutated: false
+  machine_mutated: false
+  tests_run: false
+  make_run: false
+  validators_run: false
+  generators_run: false
+  git_stage_commit_push_performed: false
+next_action: UPLOAD_V0_2_ARCHIVE_FOR_SEMANTIC_ANALYSIS

@@ -1,0 +1,107 @@
+schema_version: forprint_accounting_registry_service_roadmap_refinement_candidates_v0_1
+module_id: forprint_accounting_registry_service
+status: CANDIDATE_ONLY
+candidates:
+- candidate_id: ACC-R01
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Record the exact current accepted local baseline as v0.5 offline/sandbox sanitized structured-export parsing -> raw snapshot/staging -> mapping/default/manual-review
+    diagnostics with local persistence and governance overlay. Explicitly state that this does not establish production accounting runtime, live 1C integration, accounts-receivable automation
+    or cross-module runtime integration. Include placeholder/currentness and validator-semantic gaps as evidence to reconcile, not as automatic repair instructions.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+  - ACC-F07
+  - ACC-F13
+- candidate_id: ACC-R02
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Confirm Accounting ownership of accounting/financial facts, references, documents and reconciliation while treating generic Counterparty/Product fields as tested
+    historical projection residue until stable Business Partner, Operations, CRM, Logistics, Library and Calculator boundaries are reconciled; do not adopt contact/delivery/catalog/pricing/production
+    semantics as Accounting truth.
+  source_findings:
+  - ACC-F03
+- candidate_id: ACC-R03
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Inventory raw snapshots, staging, mapping/default/manual-review records, mapping issues, import/export/reconciliation job foundations, AccountingDocument, invoice/payment/order
+    references and typed diagnostic storage with explicit implemented / shell / placeholder / unwired classifications rather than treating file presence as runtime capability.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+  - ACC-F13
+  - ACC-F14
+- candidate_id: ACC-R04
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Define billing/customer/responsibility contexts on stable external Business Partner/operational references; explicitly exclude current generic Counterparty contact
+    channels, delivery profile, manager/tags and Product price/production attributes from becoming canonical Accounting ownership. Preserve proof/sample billing policy as an independent
+    financial classification.
+  source_findings:
+  - ACC-F03
+- candidate_id: ACC-R05
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Distinguish current structured sanitized export parsing (JSON/CSV/XML/YAML/TXT) from the future supplier-document target. Plan Excel/structured supplier files,
+    PDF, Word-like documents and scan/photo OCR into reviewable staging with preserved source/provenance, confidence and human confirmation; supplier alias/SKU mapping resolves to canonical
+    Library material identity and never silently posts uncertain financial facts.
+  source_findings:
+  - ACC-F01
+- candidate_id: ACC-R06
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Record that current invoice/payment objects are storage/reference foundations rather than a complete accounts-receivable lifecycle. Define future receivable/payment
+    reconciliation views around the agreed DUE -> overdue/promise/human-attention state model and side states, with CRM/Telegram as communication/read surfaces and any conditional payment
+    mandate explicitly later, preauthorized, limited, idempotent and auditable.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+- candidate_id: ACC-R07
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: 'Define current 1C maturity precisely: manual/sanitized structured-file parsing, fixture-driven schema/discovery abstractions, dry-run export packaging and disposable
+    working-copy safety/authorization simulation exist; real 1C connector/direct database reader/live write/synchronization do not. Mature exchange requires source-to-export provenance
+    binding, untrusted-input controls, idempotency/correlation, retry/replay/conflict handling, migrations, rollback/recovery and backup/restore evidence before live activation.'
+  source_findings:
+  - ACC-F07
+  - ACC-F08
+  - ACC-F09
+  - ACC-F10
+  - ACC-F15
+- candidate_id: ACC-R08
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  change_type: EXISTING_STEP_AND_DEPENDENCY_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Keep automation expansion gated until Operations, Library, Warehouse and Calculator boundaries are ready, and additionally require Contract Registry contract readiness
+    plus Integration Gateway routing/runtime readiness. A stable Business Partner/customer/billing identity reference boundary must be resolved before cross-module automation. Do not
+    interpret machine active_development flow status as proof that Accounting currently exposes a live financial-status runtime.
+  proposed_dependency_gate_additions:
+  - forprint_contract_registry
+  - forprint_integration_gateway
+  source_findings:
+  - ACC-F02
+  - ACC-F15
+  - ACC-F16

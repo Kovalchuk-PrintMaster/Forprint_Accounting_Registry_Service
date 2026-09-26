@@ -1,0 +1,96 @@
+schema_version: forprint_accounting_registry_service_l0_cross_project_reconciliation_manifest_v0_1
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: PASS_RECONCILIATION_READY_FOR_BOUNDED_CANONICAL_PREVIEW
+inputs:
+  audit_yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/03_comprehensive_semantic_audit/comprehensive_semantic_audit_v0_1.yaml
+    sha256: a21f463c4fa07039629028305adf6579e294e5c10926d82a10924886586cf8a0
+  audit_manifest:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/03_comprehensive_semantic_audit/manifest.yaml
+    sha256: 1594dc7ee1ada2424c0c42d150ab2d0a5c10bf4609ce48e02e58715b4e16c6e0
+  blueprint_anchor_hashes:
+    human_intent:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/human_intent/modules/forprint_accounting_registry_service.yaml
+      sha256: e7dfccee8b5c7eb641000fce43dd01d835a8af0c7d5dc5930d67ce129f31abdb
+    module_policy:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/module_policy/forprint_accounting_registry_service/module_policy.md
+      sha256: c046b321858ea0008659ff3edf3e67e91d57c430e5a95b5dd11ee5e9be7a5d52
+    goods_receipt_policy:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/module_policy/forprint_accounting_registry_service/goods_receipt_automation_target_state_v0_1_20260826.md
+      sha256: dac053bd4efebeb5ce71325d447db2e7dac09090b41b23848503b2beab468c30
+    accounts_receivable_direction:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/accounts_receivable_collection_direction_v0_1.md
+      sha256: 39be8a528eda77172adaf5b092a63efbbf6365fa8a04ef38e2066fe343c0e745
+    full_horizon_md:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.md
+      sha256: 01bc35e630c4a42c3f360aa658c4d67a0d008fd23551bc62904a59163c71861a
+    full_horizon_yaml:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.yaml
+      sha256: cbfca4b97c739e9b13ec1ed31afd7d32834923a87d8caa756eb4c1355fc50486
+    approval_matrix_md:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.md
+      sha256: 2efa675aac3ac5b5c1b95d5261a4a5c5040917ea771286ad4ae4358a9dfef4ad
+    approval_matrix_yaml:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.yaml
+      sha256: 5305f0d74cbef25eb533909c80df14fbb4e134a17cace603cd1e97b07cded8fd
+    machine_modules:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/modules.yaml
+      sha256: f38886cc0e49960726788d968f7f30c5bcdb83d369f93702f6c4bc1cc3e319f6
+    machine_ownership:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/ownership.yaml
+      sha256: bc80af7b09815e553cf4f1878361446aee0463b5149d729b75b52abfa11c117b
+    machine_contracts:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/contracts.yaml
+      sha256: 442c45c3fd9e772b28adc9a893a1b500cad7cd6bebdb782ed1fd748a50285879
+    machine_data_flows:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/data_flows.yaml
+      sha256: 9b97fb22437bf748d7a4f76758479a17690a95951bd576f739f3c51516c60c8a
+    machine_data_objects:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/data_objects.yaml
+      sha256: 8c84d9eb1276d3091699766210f48a7ebd5affb8ea490c2ad4b9093be673cde7
+    machine_identity:
+      path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/module_identity_registry.yaml
+      sha256: c05695736838ab18bc0ba825dc7fde9dade605081ed4985343eb3437c419e0ca
+outputs:
+  cross_project_blueprint_reconciliation_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/cross_project_blueprint_reconciliation_v0_1.yaml
+    size_bytes: 25579
+    sha256: faf3a64959e2c0f59976e17ed40521e5b2233c6b20c41f495b1b5a01567d6657
+  cross_project_blueprint_reconciliation_v0_1.md:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/cross_project_blueprint_reconciliation_v0_1.md
+    size_bytes: 11989
+    sha256: 65fc83c93f74b60d4427b3acb6f217038bc9dcf9c7c1dc88d7105bc3e86b2915
+  finding_disposition_matrix_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/finding_disposition_matrix_v0_1.yaml
+    size_bytes: 8290
+    sha256: 412e3506810f7e3e53320ad757a1fc828e097052f84862433d90b5250202d153
+  roadmap_refinement_candidates_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/roadmap_refinement_candidates_v0_1.yaml
+    size_bytes: 6101
+    sha256: d8f58fb7fb4ce2e04eb3cbcc4d64448c9cac1ce9ed29175c934b53b678474648
+  machine_candidate_register_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/machine_candidate_register_v0_1.yaml
+    size_bytes: 2929
+    sha256: 16fd86b8181b8c131739296c8fdbe61571dcc1a89d097625ae18f83c04d639d5
+  deferred_module_remediation_candidates_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/deferred_module_remediation_candidates_v0_1.yaml
+    size_bytes: 2169
+    sha256: 064502531d3bd10d4a87729795aeb155f69238729a014f4497da95712774242b
+  methodology_improvement_candidates_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/methodology_improvement_candidates_v0_1.yaml
+    size_bytes: 1495
+    sha256: 18a5aae3d5c2cdefbf5ce8736ba44fba7409344a0b6f80208109d3a62b9eaa87
+  canonical_enrichment_scope_candidate_v0_1.yaml:
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/04_cross_project_blueprint_reconciliation/canonical_enrichment_scope_candidate_v0_1.yaml
+    size_bytes: 1940
+    sha256: b40d689a622a31c4ea7d8092871f81e53c1ba8fd9d74274190b6e271c322960d
+safety:
+  accounting_source_mutated: false
+  blueprint_mutated: false
+  roadmap_mutated: false
+  machine_mutated: false
+  human_intent_mutated: false
+  module_policy_mutated: false
+  git_stage_commit_push_performed: false
+next_action: BUILD_EXACT_BOUNDED_CANONICAL_ENRICHMENT_PREVIEW

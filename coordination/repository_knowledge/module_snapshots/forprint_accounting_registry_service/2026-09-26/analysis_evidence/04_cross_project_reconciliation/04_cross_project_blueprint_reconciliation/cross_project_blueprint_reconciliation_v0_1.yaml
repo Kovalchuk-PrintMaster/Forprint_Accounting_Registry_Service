@@ -1,0 +1,471 @@
+schema_version: forprint_accounting_registry_service_l0_cross_project_blueprint_reconciliation_v0_1
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: PASS_RECONCILIATION_READY_FOR_BOUNDED_CANONICAL_PREVIEW
+analysis_layer: L0_baseline_reconstruction_and_knowledge_stabilization
+action_now: none
+blueprint_snapshot:
+  anchor_hashes:
+    human_intent: e7dfccee8b5c7eb641000fce43dd01d835a8af0c7d5dc5930d67ce129f31abdb
+    module_policy: c046b321858ea0008659ff3edf3e67e91d57c430e5a95b5dd11ee5e9be7a5d52
+    goods_receipt_policy: dac053bd4efebeb5ce71325d447db2e7dac09090b41b23848503b2beab468c30
+    accounts_receivable_direction: 39be8a528eda77172adaf5b092a63efbbf6365fa8a04ef38e2066fe343c0e745
+    full_horizon_md: 01bc35e630c4a42c3f360aa658c4d67a0d008fd23551bc62904a59163c71861a
+    full_horizon_yaml: cbfca4b97c739e9b13ec1ed31afd7d32834923a87d8caa756eb4c1355fc50486
+    approval_matrix_md: 2efa675aac3ac5b5c1b95d5261a4a5c5040917ea771286ad4ae4358a9dfef4ad
+    approval_matrix_yaml: 5305f0d74cbef25eb533909c80df14fbb4e134a17cace603cd1e97b07cded8fd
+    machine_modules: f38886cc0e49960726788d968f7f30c5bcdb83d369f93702f6c4bc1cc3e319f6
+    machine_ownership: bc80af7b09815e553cf4f1878361446aee0463b5149d729b75b52abfa11c117b
+    machine_contracts: 442c45c3fd9e772b28adc9a893a1b500cad7cd6bebdb782ed1fd748a50285879
+    machine_data_flows: 9b97fb22437bf748d7a4f76758479a17690a95951bd576f739f3c51516c60c8a
+    machine_data_objects: 8c84d9eb1276d3091699766210f48a7ebd5affb8ea490c2ad4b9093be673cde7
+    machine_identity: c05695736838ab18bc0ba825dc7fde9dade605081ed4985343eb3437c419e0ca
+  current_accounting_role: Operational/commercial accounting registry and 1C compatibility boundary
+  current_accounting_priority: P0
+  current_dependencies_or_inputs:
+  - forprint_operations_control_registry
+  - forprint_library
+  - warehouse_service
+  - calculator_engine
+  current_H10_dependency_gate:
+  - forprint_operations_control_registry
+  - forprint_library
+  - warehouse_service
+  - calculator_engine
+  current_implementation_eligible_now: false
+  current_portfolio_gate: HOLD_UNTIL_PORTFOLIO_READINESS_BASELINE_COMPLETE
+reconciliation_summary:
+  audit_finding_count: 16
+  roadmap_existing_step_refinement_count: 8
+  new_roadmap_step_id_count: 0
+  roadmap_unchanged_accounting_steps:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H05
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H08
+  machine_candidate_count: 6
+  machine_mutation_recommended_now: false
+  module_local_remediation_candidate_count: 10
+  methodology_improvement_candidate_count: 4
+  approval_state_changes: 0
+  execution_authority_changes: 0
+  source_basis_changes: 0
+finding_disposition_matrix:
+- finding_id: ACC-F01
+  classification: STRATEGIC_TARGET_AHEAD_OF_IMPLEMENTATION
+  blueprint_alignment: EXPECTED_DIRECTIONAL_GAP
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_CURRENT_V0_5_BASELINE
+  canonical_disposition: REFINE_EXISTING_ROADMAP_STEPS
+  reason: Blueprint target is intentionally broader than current implementation; roadmap should record exact implemented baseline without weakening target direction.
+- finding_id: ACC-F02
+  classification: CONTRACT_AUTHORITY_DRIFT
+  blueprint_alignment: MODULE_LOCAL_STALE_REFERENCE_BLUEPRINT_DIRECTION_CURRENT
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: DEFER_NO_EVIDENCE_OWNERSHIP_IS_WRONG
+  module_disposition: LATER_RECONCILE_LOCAL_MANIFEST_AND_PLACEHOLDER_CONTRACT_TEXT
+  canonical_disposition: ADD_CONTRACT_AND_ROUTING_READINESS_TO_DEPENDENCY_GATE
+  reason: Contract Registry / Integration Gateway are now relevant cross-module readiness dependencies; local historical Library contract-authority text should not be silently promoted.
+- finding_id: ACC-F03
+  classification: ACTIVE_TESTED_SEMANTIC_RESIDUE
+  blueprint_alignment: BLUEPRINT_BOUNDARY_STRONGER_THAN_CURRENT_LOCAL_MODEL
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_AND_RECONCILE_BEFORE_REFACTOR
+  canonical_disposition: REFINE_OWNERSHIP_AND_CONTEXT_STEPS
+  reason: Current generic Counterparty/Product models are evidence of historical local projection semantics, not proof Accounting should own CRM/catalog/logistics/calculator truth.
+- finding_id: ACC-F04
+  classification: VALIDATOR_SEMANTIC_BLIND_SPOT
+  blueprint_alignment: INTERNAL_VALIDATION_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Validator coverage weakness is a module engineering-quality issue, not a portfolio ownership change.
+- finding_id: ACC-F05
+  classification: IDENTITY_ALIAS_DRIFT
+  blueprint_alignment: BLUEPRINT_CANONICAL_ID_ALREADY_CORRECT
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: BOUNDED_LOCAL_IDENTITY_RECONCILIATION_LATER
+  canonical_disposition: NO_BLUEPRINT_IDENTITY_CHANGE
+  reason: Historical operational-registry alias exists only in module-local current surfaces; Blueprint already uses forprint_operations_control_registry.
+- finding_id: ACC-F06
+  classification: DECLARED_OWNERSHIP_EXCEEDS_IMPLEMENTED_DOMAIN_RUNTIME
+  blueprint_alignment: TARGET_OWNERSHIP_VALID_IMPLEMENTATION_PARTIAL
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: DEFER_STATUS_CURRENTNESS_NOT_OWNERSHIP_ERROR
+  module_disposition: CLASSIFY_REFERENCES_AND_DOCUMENTS_AS_FOUNDATION_OR_SHELL
+  canonical_disposition: REFINE_CURRENTNESS_WITHOUT_REASSIGNING_OWNERSHIP
+  reason: Machine ownership describes intended domain authority; audit proves lifecycle maturity is partial, not that another module owns invoice/payment truth.
+- finding_id: ACC-F07
+  classification: ONE_C_CAPABILITY_NAMING_OVERSTATEMENT
+  blueprint_alignment: ROADMAP_H09_ALREADY_EXPECTS_MATURE_FUTURE_EXCHANGE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: DOCUMENT_CURRENT_FIXTURE_SANDBOX_BOUNDARY
+  canonical_disposition: REFINE_CURRENT_1C_MATURITY
+  reason: Current direct-I/O names must not be read as a live 1C connector or real direct database capability.
+- finding_id: ACC-F08
+  classification: SANDBOX_WRITE_SIMULATION_SEMANTIC_MISMATCH
+  blueprint_alignment: LOCAL_SEMANTIC_GAP_WITHIN_SANDBOX
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: LATER_RENAME_OR_IMPLEMENT_ACTUAL_WORKING_COPY_MUTATION_WITH_TESTS
+  canonical_disposition: REFINE_H09_SAFETY_CURRENTNESS
+  reason: Successful safety authorization is not equivalent to a write being executed; roadmap should preserve this distinction before mature 1C exchange.
+- finding_id: ACC-F09
+  classification: SOURCE_PROVENANCE_BINDING_GAP
+  blueprint_alignment: FUTURE_1C_SECURITY_REQUIREMENT
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_PROVENANCE_HARDENING
+  canonical_disposition: REFINE_H09_WITH_SOURCE_BINDING_REQUIREMENT
+  reason: Validated source metadata and parsed export path are not yet cryptographically/semantically bound.
+- finding_id: ACC-F10
+  classification: SANITIZATION_TRUSTS_DECLARED_METADATA
+  blueprint_alignment: CURRENT_CONTROLLED_FIXTURE_ASSUMPTION
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_EXTERNAL_INPUT_GATE
+  canonical_disposition: REFINE_H09_WITH_UNTRUSTED_INPUT_BOUNDARY
+  reason: Current sanitization is metadata trust, not arbitrary-content sanitization; acceptable for controlled sandbox only.
+- finding_id: ACC-F11
+  classification: STATUS_SURFACE_STALENESS
+  blueprint_alignment: MODULE_COORDINATION_QUALITY_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Literal placeholders and historical check report freshness are local coordination/reporting concerns.
+- finding_id: ACC-F12
+  classification: OPERATOR_CHECK_SIDE_EFFECT
+  blueprint_alignment: OPERATOR_SURFACE_GOVERNANCE_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Mutating pull/report behavior under governance-check belongs to internal operator-quality work, not accounting domain roadmap.
+- finding_id: ACC-F13
+  classification: PLACEHOLDER_SURFACE
+  blueprint_alignment: CURRENTNESS_EVIDENCE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: DO_NOT_COUNT_PLACEHOLDERS_AS_CAPABILITIES
+  canonical_disposition: REFINE_SELF_INVENTORY_LANGUAGE
+  reason: Placeholder docs/contracts/tests are evidence for currentness classification, not implemented contract capability.
+- finding_id: ACC-F14
+  classification: UNWIRED_STORAGE_SURFACES
+  blueprint_alignment: PARTIAL_FOUNDATION
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_AS_PARTIAL_FOUNDATION
+  canonical_disposition: REFINE_H03_IMPLEMENTED_VS_UNWIRED_INVENTORY
+  reason: Typed storage records exist but are not wired into current mapping service behavior.
+- finding_id: ACC-F15
+  classification: PRODUCTION_RELIABILITY_GAP_EXPECTED
+  blueprint_alignment: EXPECTED_PRE_PRODUCTION_GATE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_OPERATIONAL_FITNESS_GATE
+  canonical_disposition: REFINE_MATURE_1C_AND_DEPENDENCY_GATES
+  reason: Idempotency, retries, replay, migrations and backup/restore are required before live accounting automation but their absence is consistent with current sandbox stage.
+- finding_id: ACC-F16
+  classification: MACHINE_CURRENTNESS_GAP
+  blueprint_alignment: FLOW_STATUS_AHEAD_OF_RUNTIME
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: DEFERRED_RECONCILE_BEFORE_IMPLEMENTATION
+  module_disposition: NO_RUNTIME_CLAIM_UNTIL_REAL_CROSS_MODULE_SURFACE_EXISTS
+  canonical_disposition: DO_NOT_MUTATE_MACHINE_IN_L0_CLOSEOUT
+  reason: accounting_to_crm_financial_status is marked active_development while no module runtime integration exists; changing machine status now requires broader contract/currentness
+    policy, not a one-module guess.
+roadmap_refinement_candidates:
+- candidate_id: ACC-R01
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Record the exact current accepted local baseline as v0.5 offline/sandbox sanitized structured-export parsing -> raw snapshot/staging -> mapping/default/manual-review
+    diagnostics with local persistence and governance overlay. Explicitly state that this does not establish production accounting runtime, live 1C integration, accounts-receivable automation
+    or cross-module runtime integration. Include placeholder/currentness and validator-semantic gaps as evidence to reconcile, not as automatic repair instructions.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+  - ACC-F07
+  - ACC-F13
+- candidate_id: ACC-R02
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Confirm Accounting ownership of accounting/financial facts, references, documents and reconciliation while treating generic Counterparty/Product fields as tested
+    historical projection residue until stable Business Partner, Operations, CRM, Logistics, Library and Calculator boundaries are reconciled; do not adopt contact/delivery/catalog/pricing/production
+    semantics as Accounting truth.
+  source_findings:
+  - ACC-F03
+- candidate_id: ACC-R03
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Inventory raw snapshots, staging, mapping/default/manual-review records, mapping issues, import/export/reconciliation job foundations, AccountingDocument, invoice/payment/order
+    references and typed diagnostic storage with explicit implemented / shell / placeholder / unwired classifications rather than treating file presence as runtime capability.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+  - ACC-F13
+  - ACC-F14
+- candidate_id: ACC-R04
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Define billing/customer/responsibility contexts on stable external Business Partner/operational references; explicitly exclude current generic Counterparty contact
+    channels, delivery profile, manager/tags and Product price/production attributes from becoming canonical Accounting ownership. Preserve proof/sample billing policy as an independent
+    financial classification.
+  source_findings:
+  - ACC-F03
+- candidate_id: ACC-R05
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Distinguish current structured sanitized export parsing (JSON/CSV/XML/YAML/TXT) from the future supplier-document target. Plan Excel/structured supplier files,
+    PDF, Word-like documents and scan/photo OCR into reviewable staging with preserved source/provenance, confidence and human confirmation; supplier alias/SKU mapping resolves to canonical
+    Library material identity and never silently posts uncertain financial facts.
+  source_findings:
+  - ACC-F01
+- candidate_id: ACC-R06
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Record that current invoice/payment objects are storage/reference foundations rather than a complete accounts-receivable lifecycle. Define future receivable/payment
+    reconciliation views around the agreed DUE -> overdue/promise/human-attention state model and side states, with CRM/Telegram as communication/read surfaces and any conditional payment
+    mandate explicitly later, preauthorized, limited, idempotent and auditable.
+  source_findings:
+  - ACC-F01
+  - ACC-F06
+- candidate_id: ACC-R07
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  change_type: EXISTING_STEP_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: 'Define current 1C maturity precisely: manual/sanitized structured-file parsing, fixture-driven schema/discovery abstractions, dry-run export packaging and disposable
+    working-copy safety/authorization simulation exist; real 1C connector/direct database reader/live write/synchronization do not. Mature exchange requires source-to-export provenance
+    binding, untrusted-input controls, idempotency/correlation, retry/replay/conflict handling, migrations, rollback/recovery and backup/restore evidence before live activation.'
+  source_findings:
+  - ACC-F07
+  - ACC-F08
+  - ACC-F09
+  - ACC-F10
+  - ACC-F15
+- candidate_id: ACC-R08
+  step_id: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  change_type: EXISTING_STEP_AND_DEPENDENCY_REFINEMENT
+  approval_state_change: false
+  execution_authority_change: false
+  source_basis_change: false
+  proposed_refinement: Keep automation expansion gated until Operations, Library, Warehouse and Calculator boundaries are ready, and additionally require Contract Registry contract readiness
+    plus Integration Gateway routing/runtime readiness. A stable Business Partner/customer/billing identity reference boundary must be resolved before cross-module automation. Do not
+    interpret machine active_development flow status as proof that Accounting currently exposes a live financial-status runtime.
+  proposed_dependency_gate_additions:
+  - forprint_contract_registry
+  - forprint_integration_gateway
+  source_findings:
+  - ACC-F02
+  - ACC-F15
+  - ACC-F16
+machine_candidate_register:
+- candidate_id: ACC-M01
+  surface: machine/contracts.yaml + machine/data_flows.yaml
+  observed: accounting_to_crm_financial_status.v1 and accounting_financial_status_to_crm are active_development
+  audit_fact: Accounting module exposes no live cross-module runtime beyond local health/sandbox surfaces.
+  disposition: DEFERRED_RECONCILE_BEFORE_IMPLEMENTATION
+  canonical_mutation_now: false
+  reason: A one-module audit cannot safely redefine project-wide meaning of active_development.
+- candidate_id: ACC-M02
+  surface: machine/modules.yaml + machine/ownership.yaml + machine/data_objects.yaml
+  observed: invoice/payment/accounting_document/one_c_sync_event ownership is assigned to Accounting
+  audit_fact: Current implementation maturity for invoice/payment lifecycle is partial/reference-shell level.
+  disposition: KEEP_OWNERSHIP_DEFER_MATURITY_RECONCILIATION
+  canonical_mutation_now: false
+  reason: Implementation incompleteness does not prove ownership assignment is wrong.
+- candidate_id: ACC-M03
+  surface: contract authority model
+  observed: module-local historical surfaces still name Library as future canonical contract truth
+  audit_fact: Blueprint portfolio now contains forprint_contract_registry for versioned inter-module contracts
+  disposition: MODULE_LOCAL_REMEDIATION_LATER_BLUEPRINT_NO_MACHINE_CHANGE_NOW
+  canonical_mutation_now: false
+  reason: Blueprint direction is already newer; local module references need future bounded reconciliation.
+- candidate_id: ACC-M04
+  surface: module identity references
+  observed: module-local surfaces retain forprint_operational_registry aliases
+  audit_fact: Blueprint canonical identity is forprint_operations_control_registry
+  disposition: MODULE_LOCAL_REMEDIATION_LATER
+  canonical_mutation_now: false
+  reason: Machine identity is already canonical.
+- candidate_id: ACC-M05
+  surface: 1C capability/currentness representation
+  observed: machine target objects/flows can be read more broadly than current sandbox implementation
+  audit_fact: real live 1C connector/direct database/write/sync capability is absent
+  disposition: ROADMAP_CURRENTNESS_REFINEMENT_ONLY
+  canonical_mutation_now: false
+  reason: Roadmap is the safer surface for maturity clarification until machine currentness schema is explicitly designed.
+- candidate_id: ACC-M06
+  surface: party/catalog references
+  observed: module has generic Counterparty/Product projections with foreign-domain fields
+  audit_fact: Blueprint expects stable Business Partner and Library/Operations/CRM domain boundaries
+  disposition: DEFERRED_CROSS_MODULE_IDENTITY_AND_REFERENCE_RECONCILIATION
+  canonical_mutation_now: false
+  reason: No single-module mutation should invent the canonical Business Partner/reference model.
+deferred_module_remediation_candidates:
+- candidate_id: ACC-LOCAL-01
+  class: module_semantic_reconciliation
+  issue: generic Counterparty/Product models contain cross-domain semantics
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-02
+  class: validator_semantic_coverage
+  issue: boundary validator does not cover models/ generic projection surfaces
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-03
+  class: identity_alias_reconciliation
+  issue: historical forprint_operational_registry references remain in manifest/contracts
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-04
+  class: contract_authority_reconciliation
+  issue: local canonical_contract_truth still points to Library instead of current Contract Registry direction
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-05
+  class: sandbox_write_semantics
+  issue: applied=true may represent authorization/simulation rather than an executed write
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-06
+  class: source_provenance_security
+  issue: validated source is not strongly bound to export_path and snapshot hash is not populated by pipeline
+  priority: high
+  action_now: none
+- candidate_id: ACC-LOCAL-07
+  class: external_input_trust
+  issue: sanitization trusts declared metadata and parser defaults within controlled sandbox
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-08
+  class: status_generation
+  issue: current_status contains literal placeholders and stale/pending verification semantics
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-09
+  class: operator_surface_side_effect
+  issue: governance-check invokes potentially mutating blueprint-pull/status-report
+  priority: medium
+  action_now: none
+- candidate_id: ACC-LOCAL-10
+  class: placeholder_and_unwired_surface
+  issue: empty placeholders and typed but unwired mapping diagnostic storage must not be counted as active capability
+  priority: medium
+  action_now: none
+methodology_improvement_candidates:
+- candidate_id: METH-ACC-01
+  problem: Initial preflight included virtualenv dependency tree and distorted semantic source counts.
+  proposal: Standard L0 inventory must exclude all recognized virtualenv/generated package metadata before semantic segmentation.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-02
+  problem: v0.1 porcelain parser stripped the leading status space of first Git record.
+  proposal: Preserve raw leading spaces when parsing git status --porcelain and test staged/unstaged/deleted/untracked cases.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-03
+  problem: v0.2 clean-current archive still captured .git metadata/object files although semantic packet selection did not use them.
+  proposal: Exclude .git from inventory/archive corpus itself, not only from semantic packet selection; report semantic module file count separately from transport/provenance metadata.
+  already_applied_locally_to_analysis: false
+- candidate_id: METH-ACC-04
+  problem: A green validator can hide semantic blind spots when it checks only selected directories.
+  proposal: L0 semantic audit should compare validator coverage scope against actual risky semantic surfaces and record validator-semantic gaps.
+  already_applied_locally_to_analysis: true
+canonical_enrichment_scope_candidate:
+  schema_version: forprint_accounting_registry_service_l0_canonical_enrichment_scope_candidate_v0_1
+  module_id: forprint_accounting_registry_service
+  status: READY_FOR_BOUNDED_PREVIEW_NOT_AUTHORIZED_FOR_APPLY
+  action_now: preview_only
+  target_files:
+  - coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.md
+  - coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.yaml
+  - coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.md
+  - coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.yaml
+  allowed_change_classes:
+  - existing_accounting_step_text_refinement
+  - existing_accounting_dependency_gate_refinement
+  - accounting_module_dependencies_or_inputs_refinement_if_required_for_consistency
+  forbidden_change_classes:
+  - new_roadmap_step_ids
+  - approval_state_changes
+  - execution_authority_changes
+  - source_basis_changes
+  - H05_semantic_change
+  - H08_semantic_change
+  - non_accounting_module_step_changes
+  - machine_mutation
+  - human_intent_mutation
+  - module_policy_mutation
+  - current_execution_focus_mutation
+  - CF10_mutation
+  roadmap_refinement_candidate_count: 8
+  target_step_ids:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  unchanged_step_ids:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H05
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H08
+  proposed_dependency_additions:
+  - forprint_contract_registry
+  - forprint_integration_gateway
+  machine_candidate_disposition: ALL_DEFERRED_OR_NO_CHANGE
+  machine_mutation_allowed: false
+  next_action: BUILD_EXACT_BOUNDED_CANONICAL_ENRICHMENT_PREVIEW
+decision:
+  roadmap: BOUNDED_EXISTING_STEP_ENRICHMENT_RECOMMENDED_FOR_PREVIEW
+  machine: DEFER_ALL_MACHINE_MUTATIONS_PENDING_CROSS_PROJECT_CURRENTNESS_OR_IDENTITY_RECONCILIATION
+  module_implementation: NO_IMPLEMENTATION_IN_L0_ANALYSIS_CONTOUR
+  methodology: RECORD_CANDIDATES_DO_NOT_SILENTLY_REWRITE_V0_2
+next_action: BUILD_EXACT_BOUNDED_CANONICAL_ENRICHMENT_PREVIEW
+authority:
+  implementation_authority_created: false
+  roadmap_mutation_authority_created: false
+  machine_mutation_authority_created: false
+  execution_authority_created: false
+  acceptance_authority_created: false

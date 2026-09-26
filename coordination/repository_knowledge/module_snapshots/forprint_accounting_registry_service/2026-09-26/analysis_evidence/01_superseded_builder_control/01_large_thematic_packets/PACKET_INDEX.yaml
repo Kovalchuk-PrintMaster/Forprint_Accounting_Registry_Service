@@ -1,0 +1,95 @@
+schema_version: forprint_accounting_registry_service_l0_packet_index_v0_1
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: ALL_THEMATIC_PACKETS_READY_FOR_SEMANTIC_ANALYSIS
+entry_preflight: tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/preflight_manifest.yaml
+current_non_tmp_inventory:
+  file_count: 4256
+  total_bytes: 149636689
+  aggregate_sha256: 844d795cfd51683459f170980752a78ca104f53d6bf443c9e1d6e43cc865cf5c
+tmp_provenance_inventory:
+  file_count: 54
+  total_bytes: 4191747
+  aggregate_sha256: 1df0149ff70dc118d1a9cb5c613179613a387a2a8d96b585cd47273cbc5443c8
+packets:
+  A:
+    packet_id: A_identity_history_documentation_lineage
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/A_identity_history_documentation_lineage/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/A_identity_history_documentation_lineage/manifest.yaml
+    selected_source_count: 120
+    selected_blueprint_context_count: 35
+    relevant_candidate_count: 705
+    packet_md_size_bytes: 2539489
+    packet_md_sha256: 02f5ac2e4b2cd3461ba7e0513c32bf43addc39bff4a0ba579316be59150169de
+  B:
+    packet_id: B_domain_runtime_business_capabilities
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/B_domain_runtime_business_capabilities/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/B_domain_runtime_business_capabilities/manifest.yaml
+    selected_source_count: 180
+    selected_blueprint_context_count: 9
+    relevant_candidate_count: 4256
+    packet_md_size_bytes: 2561314
+    packet_md_sha256: cb08405f6e00f88730d71d7eac81c9c51c5f707e6ab7e82077c666c08ff2a032
+  C:
+    packet_id: C_ownership_contracts_integrations
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/C_ownership_contracts_integrations/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/C_ownership_contracts_integrations/manifest.yaml
+    selected_source_count: 140
+    selected_blueprint_context_count: 13
+    relevant_candidate_count: 1161
+    packet_md_size_bytes: 2556153
+    packet_md_sha256: 68023132296376b1d30051e9219f234308d76f85858effe2ad2c090dcb906fff
+  D:
+    packet_id: D_governance_validation_operator_security_recovery
+    packet_md: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/D_governance_validation_operator_security_recovery/packet.md
+    manifest: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/D_governance_validation_operator_security_recovery/manifest.yaml
+    selected_source_count: 180
+    selected_blueprint_context_count: 13
+    relevant_candidate_count: 1437
+    packet_md_size_bytes: 2558882
+    packet_md_sha256: 47da61b399d9b433dcbc3cb014ec4edb96db8c9abe919843f3a22a8cb10ce642
+git_history:
+  log_120.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/log_120.txt
+    sha256: 3b6e667accbb7b985c4b24be596a39cf570027faabe836ddb44abfa177b7f3b9
+    size_bytes: 780
+  log_name_status_60.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/log_name_status_60.txt
+    sha256: f492119ba2ceca4731b02074f699e26abf281ed3625ba5ecb31203fe2714c1f0
+    size_bytes: 8728
+  branches.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/branches.txt
+    sha256: 749b496488fe20ebbaf636c9170082353aaf59413714356f56cdea2b305dfa58
+    size_bytes: 164
+  tags.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/tags.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+  status_porcelain.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/status_porcelain.txt
+    sha256: aec1136126fbb523298c4b58afdb4a35716aed4b090018e5ae23c1c1b4430f75
+    size_bytes: 65
+  diff_stat.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/diff_stat.txt
+    sha256: f7e02d98c54322bd2d0894971f45359040e4cef3daf326bffb8383b59dac2ff2
+    size_bytes: 113
+  diff_name_status.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/diff_name_status.txt
+    sha256: ae3d938bb7ec0384063ee6931e6a0b82c4fe2b5c17741ccfde38c00bdc29752c
+    size_bytes: 54
+  cached_diff_name_status.txt:
+    returncode: 0
+    path: tmp/module_knowledge_analysis/forprint_accounting_registry_service/01_large_thematic_packets/git_history/cached_diff_name_status.txt
+    sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    size_bytes: 0
+authority:
+  analysis_only: true
+  action_now: none
+next_action: ANALYZE_PACKETS_A_B_C_D

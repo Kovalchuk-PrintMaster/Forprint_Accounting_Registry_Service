@@ -1,0 +1,9 @@
+schema_version: forprint_module_analysis_index_v0_1
+reports:
+- module_id: forprint_accounting_registry_service
+  snapshot_date: '2026-09-26'
+  report_type: module_knowledge_snapshot
+  path: coordination/reports/analysis/2026-09-26__forprint_accounting_registry_service__module_snapshot_v0_1.md
+  roadmap_rebuild_input: coordination/reports/analysis/2026-09-26__forprint_accounting_registry_service__roadmap_rebuild_input_v0_1.yaml
+  source_commit: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+  status: L0_COMPLETE_FOR_CURRENT_PASS

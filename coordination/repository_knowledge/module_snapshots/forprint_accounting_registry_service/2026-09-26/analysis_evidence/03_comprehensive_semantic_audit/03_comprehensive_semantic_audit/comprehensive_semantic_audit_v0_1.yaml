@@ -1,0 +1,603 @@
+schema_version: forprint_accounting_registry_service_l0_comprehensive_semantic_audit_v0_1
+module_id: forprint_accounting_registry_service
+source_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+status: PASS_COMPREHENSIVE_AUDIT_WITH_RECONCILIATION_REQUIRED
+analysis_layer: L0_baseline_reconstruction_and_knowledge_stabilization
+methodology_revision: v0.2
+action_now: none
+review_basis:
+  clean_packet_index: tmp/module_knowledge_analysis/forprint_accounting_registry_service/02_clean_semantic_packets_v0_2/CLEAN_PACKET_INDEX.yaml
+  packet_hashes:
+    A: d0be22050f7271591d5c64549dcc5702b9a892f591d979534a86469c559b8a3a
+    B: ad8cbf62e40f4b0352993bac0229dc2ad8dc2ddca79e630548d09a5319b58184
+    C: 16fc4bf507cb4143f785b350ccff74db35e3a453018a6517708bb27c2e3a0264
+    D: dd767345648f5556fa8923a8138c4a99c528037ad5e503a501bbcdfb9f6451dc
+  clean_text_file_count: 137
+  packet_A_sources: 32
+  packet_B_sources: 114
+  packet_C_sources: 51
+  packet_D_sources: 86
+  key_module_files:
+    README.md:
+      size_bytes: 5742
+      sha256: 5cc47e3c61f8ac092ffc4381db947134ed227a90eb5d41bc880be9cdb725312d
+    forprint_module_manifest.yaml:
+      size_bytes: 3078
+      sha256: b67d5923a9fb372e2ee9c88b19659d9f10cb63fbea90892d5abb7466dd5ade39
+    Makefile:
+      size_bytes: 3276
+      sha256: 722ba024c1d4afded857e4afdf6864f7ea7f9fae7c044c318545067450e5d0b7
+    pyproject.toml:
+      size_bytes: 979
+      sha256: b7a4c7803b144809bb59f5ba3966bb0b45b6e7359cbe7e8e19ccdd7254387fb1
+    coordination/status/current_status.yaml:
+      size_bytes: 694
+      sha256: d0e492a701abdf6d7f327d82976d095c12483453f98106874e007e0ce0730e73
+    coordination/status/current_status.md:
+      size_bytes: 524
+      sha256: 852646db66934459c595f5bb6ab44bc6878f48e99dbe574929e3fe24648bd4ce
+    coordination/status/next_questions_for_blueprint.md:
+      size_bytes: 191
+      sha256: df53573a1e6b66c5d924bef75916f3fd6ed2d5cdf928f2b0f6ded15c7ca42609
+    docs/architecture/accounting_registry_boundaries.md:
+      size_bytes: 2806
+      sha256: 3f3617513eb5e87bf978267a76a13c7181e6644a9282e122b8f75917306b89df
+    docs/architecture/accounting_vs_operational_registry.md:
+      size_bytes: 1601
+      sha256: a0609ebdef07e257df75fdd3b812b4ead396d39ffd42c883d5fd92177eb3651e
+    docs/architecture/accounting_storage_foundation.md:
+      size_bytes: 1576
+      sha256: 02e576eba354080a3f686be04d2e8190f52301ec58199bbd64aac70a09131a91
+    docs/architecture/one_c_boundary.md:
+      size_bytes: 1466
+      sha256: 75e8914886ff07f41e9807e64e1904ec442edbe26c324785929735b0eb3a4ae5
+    docs/architecture/one_c_io_strategy.md:
+      size_bytes: 940
+      sha256: 23fcca43368d4b3c013205f3737d85884ebcf518bd57655f98da49942f402846
+    docs/architecture/one_c_read_write_policy.md:
+      size_bytes: 1016
+      sha256: 5b11d7ec6d16d4a521b5ee3d7ad9feacac3ada6eca3c7a5b86bf140cceb95222
+    docs/architecture/one_c_mapping_policy.md:
+      size_bytes: 868
+      sha256: e915ba58c8cf8770c30289210450d721f55a4ebac129c34e0b5a3a6ec63c4e36
+    app/forprint_accounting_registry_service/models/counterparty.py:
+      size_bytes: 4133
+      sha256: 967a35d152b49d175af348865402e7e11dbf5b577251ec74953f8f2aeb73d2ee
+    app/forprint_accounting_registry_service/models/product.py:
+      size_bytes: 2440
+      sha256: fd917ad38e6198104cb2bf8b8dcb7bf716cb8486baa909d74f860aa07462683b
+    app/forprint_accounting_registry_service/models/mapping.py:
+      size_bytes: 1234
+      sha256: f11107a5f1d6c5e1286f552efb21af33713c0e308e03df3daca4ce1661d2bb80
+    app/forprint_accounting_registry_service/storage/models.py:
+      size_bytes: 6354
+      sha256: c51187c7be8f12821473bd3e69846f7424725900d3721baa295c62e0ce247579
+    app/forprint_accounting_registry_service/storage/mapping_models.py:
+      size_bytes: 3524
+      sha256: 1dfe68bb802cd0e4fa200c2a16e23b897d738819eae8d5d21b25242e905c20b2
+    app/forprint_accounting_registry_service/one_c_io/import_pipeline.py:
+      size_bytes: 6785
+      sha256: de309910f32053c6b72fd78f5a878ef562968c0679c8dbca039214c3f64630ba
+    app/forprint_accounting_registry_service/one_c_io/export_parsers.py:
+      size_bytes: 9482
+      sha256: 706c44b744757c7e3ea3be658ab0eddf45e1e8a4283c061556d4a7ce50bff0ac
+    app/forprint_accounting_registry_service/one_c_io/sandbox_write.py:
+      size_bytes: 5623
+      sha256: b2687b324e4d5bc54b4271c50c9bb3a175b73229ffbd6d608287bcc55444932a
+    app/forprint_accounting_registry_service/one_c_io/schema_probe.py:
+      size_bytes: 2504
+      sha256: 3bfe37e8303e0ee6ddd664bfd4f298be1f8c071914340604600cb05cdbb4ddcc
+    scripts/run_accounting_registry_checks.py:
+      size_bytes: 18801
+      sha256: 43faeb7bdf1877f121023e6cc42330f6d5cc4d62bbe0d464e6cf0ed9c0aba162
+    reports/accounting_registry_check_report.json:
+      size_bytes: 2592
+      sha256: b9ac676527f93db268c0e4360d5fa771411cbdb072d567ac92cb7ae941041fc4
+  blueprint_context:
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/human_intent/modules/forprint_accounting_registry_service.yaml
+    : size_bytes: 4849
+      sha256: e7dfccee8b5c7eb641000fce43dd01d835a8af0c7d5dc5930d67ce129f31abdb
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/module_policy/forprint_accounting_registry_service/module_policy.md
+    : size_bytes: 1322
+      sha256: c046b321858ea0008659ff3edf3e67e91d57c430e5a95b5dd11ee5e9be7a5d52
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/module_policy/forprint_accounting_registry_service/goods_receipt_automation_target_state_v0_1_20260826.md
+    : size_bytes: 1827
+      sha256: dac053bd4efebeb5ce71325d447db2e7dac09090b41b23848503b2beab468c30
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_full_horizon_target_states_v0_1.yaml
+    : size_bytes: 65183
+      sha256: cbfca4b97c739e9b13ec1ed31afd7d32834923a87d8caa756eb4c1355fc50486
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.yaml
+    : size_bytes: 147483
+      sha256: 5305f0d74cbef25eb533909c80df14fbb4e134a17cace603cd1e97b07cded8fd
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/roadmaps/details/forprint_system_blueprint/accounts_receivable_collection_direction_v0_1.md
+    : size_bytes: 2530
+      sha256: 39be8a528eda77172adaf5b092a63efbbf6365fa8a04ef38e2066fe343c0e745
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/global_policy/ecosystem_module_map.md
+    : size_bytes: 3324
+      sha256: a90c3d6ac4ab0af17af9c1ea83e1ebb595eb9333fcfcdd9f162c49aec85ab51c
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/coordination/module_policy/module_policy_index.yaml
+    : size_bytes: 28593
+      sha256: 46b225ffd0190c2248f11601499554d765f2226a782641cd961bf789b3a0b712
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/modules.yaml
+    : size_bytes: 13841
+      sha256: f38886cc0e49960726788d968f7f30c5bcdb83d369f93702f6c4bc1cc3e319f6
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/ownership.yaml
+    : size_bytes: 8159
+      sha256: bc80af7b09815e553cf4f1878361446aee0463b5149d729b75b52abfa11c117b
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/contracts.yaml
+    : size_bytes: 13609
+      sha256: 442c45c3fd9e772b28adc9a893a1b500cad7cd6bebdb782ed1fd748a50285879
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/data_flows.yaml
+    : size_bytes: 9612
+      sha256: 9b97fb22437bf748d7a4f76758479a17690a95951bd576f739f3c51516c60c8a
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/data_objects.yaml
+    : size_bytes: 22617
+      sha256: 8c84d9eb1276d3091699766210f48a7ebd5affb8ea490c2ad4b9093be673cde7
+    ? tmp/module_knowledge_analysis/forprint_accounting_registry_service/00_preflight_and_segmentation/blueprint_context/files/machine/module_identity_registry.yaml
+    : size_bytes: 2212
+      sha256: c05695736838ab18bc0ba825dc7fde9dade605081ed4985343eb3437c419e0ca
+repository_state:
+  branch: main
+  head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+  upstream: origin/main
+  upstream_head: 7315a7a6bd0a8f4e08385bdbd676edaf8aa25bb5
+  non_tmp_dirty_path_count: 0
+  tmp_or_operator_dirty_paths:
+  - status: ' D'
+    path: tmp/one_c_raw/.gitkeep
+    old_path: null
+  - status: ' D'
+    path: tmp/one_c_staging/.gitkeep
+    old_path: null
+  - status: ??
+    path: tmp.py
+    old_path: null
+maturity_assessment:
+  current_generation: v0_5_sanitized_one_c_sandbox_import_staging_foundation
+  working_characterization: COHERENT_OFFLINE_SANDBOX_FOUNDATION_WITH_STRATEGIC_AND_SEMANTIC_RECONCILIATION_REQUIRED
+  runtime_surface: minimal_fastapi_health_only
+  production_accounting_runtime: false
+  live_one_c_integration: false
+  live_one_c_write: false
+  production_database_strategy: false
+  cross_module_runtime_integration: false
+  accepted_local_baseline: sandbox_import_export_ready_paused_until_sanitized_1c_samples
+implementation_lineage:
+- commit: 2e98a3a
+  generation: v0_1_boundary_correction_baseline
+  classification: CURRENT_LINEAGE_WITH_SEMANTIC_RESIDUE
+  main_additions:
+  - boundary_docs
+  - generic_counterparty_product_projection_models
+  - placeholder_contracts
+  - health_endpoint
+  - boundary_checks
+- commit: ec46ef1
+  generation: v0_2_storage_foundation
+  classification: CURRENT_IMPLEMENTED_FOUNDATION
+  main_additions:
+  - sqlmodel_sqlite_local_storage
+  - raw_snapshot_staging_mapping_records
+  - import_export_reconciliation_job_shells
+  - accounting_document_and_reference_shells
+- commit: 009dfef
+  generation: v0_3_one_c_io_adapter_strategy
+  classification: CURRENT_IMPLEMENTED_DISCOVERY_FOUNDATION
+  main_additions:
+  - placeholder_adapter_registry
+  - safe_mapping_policy
+  - one_c_version_channel_policy
+  - direct_db_readonly_policy
+- commit: ab48ef1
+  generation: v0_4_sandbox_io_reports_directories
+  classification: CURRENT_SANDBOX_FIXTURE_CAPABILITY
+  main_additions:
+  - fixture_driven_schema_discovery
+  - directory_snapshot_staging
+  - report_snapshot_model
+  - dry_run_export_packages
+  - sandbox_write_safety_model
+- commit: 95d4a55
+  generation: v0_5_sanitized_import_pipeline
+  classification: CURRENT_ACCEPTED_LOCAL_BASELINE
+  main_additions:
+  - json_csv_xml_yaml_txt_export_parsers
+  - sanitized_source_registry
+  - offline_import_pipeline
+  - persisted_mapping_issues
+  - developer_smoke_commands
+- commit: 7315a7a
+  generation: governance_alignment_v0_1
+  classification: CURRENT_GOVERNANCE_OVERLAY
+  main_additions:
+  - coordination_status_surfaces
+  - blueprint_check_operator_targets
+  - module_status_report
+implemented_capabilities:
+- id: CAP-01
+  status: IMPLEMENTED_LOCAL
+  capability: minimal FastAPI service health surface
+  evidence:
+  - app/forprint_accounting_registry_service/main.py
+- id: CAP-02
+  status: IMPLEMENTED_LOCAL
+  capability: SQLModel/SQLite local accounting and 1C-boundary storage foundation
+  evidence:
+  - app/forprint_accounting_registry_service/storage/database.py
+  - app/forprint_accounting_registry_service/storage/models.py
+  - app/forprint_accounting_registry_service/storage/mapping_models.py
+- id: CAP-03
+  status: IMPLEMENTED_LOCAL
+  capability: sanitized file export parsing for JSON/CSV/XML/YAML/TXT tabular data
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/export_parsers.py
+  - app/forprint_accounting_registry_service/one_c_io/export_detection.py
+- id: CAP-04
+  status: IMPLEMENTED_LOCAL
+  capability: raw-snapshot metadata to staging conversion
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/import_pipeline.py
+  - app/forprint_accounting_registry_service/one_c_io/staging.py
+- id: CAP-05
+  status: IMPLEMENTED_LOCAL
+  capability: explicit mapping/default policy with unknown-field preservation and manual-review issues
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/mapping.py
+  - app/forprint_accounting_registry_service/services/mapping_issue_registry.py
+  - app/forprint_accounting_registry_service/repositories/mapping_issues.py
+- id: CAP-06
+  status: IMPLEMENTED_LOCAL
+  capability: persisted import/mapping diagnostics
+  evidence:
+  - app/forprint_accounting_registry_service/storage/mapping_models.py
+  - app/forprint_accounting_registry_service/repositories/mapping_issues.py
+- id: CAP-07
+  status: IMPLEMENTED_FIXTURE_SANDBOX
+  capability: directory and report snapshot abstractions mapped into staging
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/directories.py
+  - app/forprint_accounting_registry_service/one_c_io/reports.py
+  - app/forprint_accounting_registry_service/one_c_io/staging.py
+- id: CAP-08
+  status: IMPLEMENTED_POLICY_AND_SIMULATION
+  capability: 1C adapter/version/channel policy and placeholder adapter registry
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/adapters.py
+  - app/forprint_accounting_registry_service/one_c_io/policies.py
+- id: CAP-09
+  status: IMPLEMENTED_FIXTURE_SANDBOX
+  capability: fixture-driven schema discovery and raw extraction abstractions
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/direct_db.py
+  - app/forprint_accounting_registry_service/one_c_io/discovery.py
+  - app/forprint_accounting_registry_service/one_c_io/schema_probe.py
+- id: CAP-10
+  status: IMPLEMENTED_POLICY_AND_SIMULATION
+  capability: dry-run export package and disposable working-copy write safety model
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/export_packages.py
+  - app/forprint_accounting_registry_service/one_c_io/sandbox_write.py
+  - app/forprint_accounting_registry_service/one_c_io/test_database_registry.py
+- id: CAP-11
+  status: IMPLEMENTED_LOCAL
+  capability: developer smoke CLIs for parse/discovery/import pipeline
+  evidence:
+  - scripts/one_c_parse_export.py
+  - scripts/one_c_discover_source.py
+  - scripts/one_c_run_import_pipeline.py
+- id: CAP-12
+  status: IMPLEMENTED_LOCAL_HISTORICAL_CHECK_EVIDENCE
+  capability: boundary-focused lint/test/check report runner
+  evidence:
+  - scripts/run_accounting_registry_checks.py
+  - reports/accounting_registry_check_report.json
+not_currently_implemented:
+- production invoice lifecycle
+- production payment lifecycle
+- accounts_receivable collection state machine
+- payment/bank reconciliation runtime
+- supplier PDF/Word/scan/OCR intake
+- supplier alias learning against canonical Library material identity
+- goods receipt accounting workflow
+- management accounting and settlements
+- real 1C connector
+- real 1C direct database reader
+- live 1C write or automatic posting
+- production synchronization or conflict resolution
+- Integration Gateway runtime command/event integration
+- Operations Control Registry runtime integration
+- Warehouse runtime integration
+- Calculator runtime integration
+- Contract Registry adoption
+- production database/migrations
+- outbox/inbox/idempotency/correlation/replay
+- backup/restore and disaster recovery
+- authenticated production API
+semantic_findings:
+- finding_id: ACC-F01
+  severity: HIGH
+  classification: STRATEGIC_TARGET_AHEAD_OF_IMPLEMENTATION
+  summary: Current repository is a v0.5 offline 1C sandbox/staging foundation, while Blueprint target has expanded to a P0 operational/commercial accounting registry with receivables,
+    supplier documents, settlements and mature accounting workflows.
+  evidence:
+  - coordination/status/current_status.md
+  - coordination/module_policy/forprint_accounting_registry_service/module_policy.md
+  - coordination/human_intent/modules/forprint_accounting_registry_service.yaml
+  - coordination/roadmaps/details/forprint_system_blueprint/portfolio_module_roadmap_approval_matrix_v0_1.yaml
+  disposition: ROADMAP_RECONCILIATION_REQUIRED_NO_IMPLEMENTATION_NOW
+- finding_id: ACC-F02
+  severity: HIGH
+  classification: CONTRACT_AUTHORITY_DRIFT
+  summary: Repository declares ForPrint Library as future canonical inter-module contract truth, but current Blueprint assigns versioned inter-module contract lifecycle/catalog authority
+    to forprint_contract_registry.
+  evidence:
+  - forprint_module_manifest.yaml
+  - contracts/placeholders/accounting.invoice_request.v1.yaml
+  - contracts/placeholders/accounting.payment_status_reference.v1.yaml
+  - coordination/global_policy/ecosystem_module_map.md
+  - coordination/module_policy/module_policy_index.yaml
+  disposition: DEFER_TO_CROSS_PROJECT_CONTRACT_AUTHORITY_RECONCILIATION
+- finding_id: ACC-F03
+  severity: HIGH
+  classification: ACTIVE_TESTED_SEMANTIC_RESIDUE
+  summary: Generic Counterparty and Product models are tracked and tested as accounting projections but contain CRM/Operations/Logistics/Library/Calculator-like semantics including contacts/channels,
+    delivery profile, manager/tags, price-group and price/production-affecting product attributes.
+  evidence:
+  - app/forprint_accounting_registry_service/models/counterparty.py
+  - app/forprint_accounting_registry_service/models/product.py
+  - tests/unit/test_counterparty_model.py
+  - tests/unit/test_product_model.py
+  - docs/development/model_naming_rules.md
+  - coordination/module_policy/forprint_accounting_registry_service/goods_receipt_automation_target_state_v0_1_20260826.md
+  disposition: OWNERSHIP_RECONCILIATION_REQUIRED_PRESERVE_AS_EVIDENCE
+- finding_id: ACC-F04
+  severity: HIGH
+  classification: VALIDATOR_SEMANTIC_BLIND_SPOT
+  summary: Boundary checker forbids generic Product/Client/Order names only in storage/models.py and one_c_io/*.py, while generic Product and Counterparty models live in models/ and
+    therefore still pass the reported boundary checks.
+  evidence:
+  - scripts/run_accounting_registry_checks.py
+  - app/forprint_accounting_registry_service/models/counterparty.py
+  - app/forprint_accounting_registry_service/models/product.py
+  - reports/accounting_registry_check_report.json
+  disposition: VALIDATOR_RECONCILIATION_CANDIDATE
+- finding_id: ACC-F05
+  severity: MEDIUM
+  classification: IDENTITY_ALIAS_DRIFT
+  summary: Current repository manifest and local placeholder contract text still reference historical forprint_operational_registry naming although Blueprint canonical ID is forprint_operations_control_registry.
+  evidence:
+  - forprint_module_manifest.yaml
+  - contracts/placeholders/accounting.payment_status_reference.v1.yaml
+  - coordination/machine/module_identity_registry.yaml
+  disposition: BOUNDED_IDENTITY_RECONCILIATION_CANDIDATE
+- finding_id: ACC-F06
+  severity: HIGH
+  classification: DECLARED_OWNERSHIP_EXCEEDS_IMPLEMENTED_DOMAIN_RUNTIME
+  summary: Manifest and Blueprint declare invoice/payment/accounting truth ownership, but current persistent implementation provides AccountingDocument plus InvoiceAccountingReference
+    and PaymentAccountingReference shells rather than full invoice/payment or receivable lifecycles.
+  evidence:
+  - forprint_module_manifest.yaml
+  - app/forprint_accounting_registry_service/storage/models.py
+  - coordination/machine/data_objects.yaml
+  - coordination/human_intent/modules/forprint_accounting_registry_service.yaml
+  disposition: CAPABILITY_CURRENTNESS_RECONCILIATION_REQUIRED
+- finding_id: ACC-F07
+  severity: HIGH
+  classification: ONE_C_CAPABILITY_NAMING_OVERSTATEMENT
+  summary: v0.4/v0.5 'direct DB/direct I/O' surfaces are fixture-driven inspection abstractions; binary/database-like .1CD/.dt/.db sources are explicitly unsupported and no real 1C connection
+    is implemented.
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/direct_db.py
+  - app/forprint_accounting_registry_service/one_c_io/schema_probe.py
+  - docs/architecture/one_c_sandbox_direct_io.md
+  disposition: DOCUMENT_CURRENTNESS_AND_ROADMAP_REFINEMENT_CANDIDATE
+- finding_id: ACC-F08
+  severity: HIGH
+  classification: SANDBOX_WRITE_SIMULATION_SEMANTIC_MISMATCH
+  summary: Non-dry-run sandbox write experiment can return applied=true after safety checks without executing the declared operations against the working copy; current semantics represent
+    authorization/simulation, not an actual write.
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/sandbox_write.py
+  - tests/unit/test_one_c_sandbox_write_hardening.py
+  disposition: SEMANTIC_NAMING_AND_TEST_RECONCILIATION_CANDIDATE
+- finding_id: ACC-F09
+  severity: HIGH
+  classification: SOURCE_PROVENANCE_BINDING_GAP
+  summary: Import pipeline validates a OneCSandboxSource object but accepts a separate export_path without proving the path corresponds to the validated source; raw snapshot file_hash
+    is also not populated in the pipeline.
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/import_pipeline.py
+  - app/forprint_accounting_registry_service/storage/models.py
+  - app/forprint_accounting_registry_service/one_c_io/test_database_registry.py
+  disposition: FUTURE_SECURITY_AND_PROVENANCE_HARDENING_CANDIDATE
+- finding_id: ACC-F10
+  severity: MEDIUM
+  classification: SANITIZATION_TRUSTS_DECLARED_METADATA
+  summary: Sanitization layer validates metadata flags rather than sanitizing content; parsers commonly default batches to sanitized/non-production. This is acceptable for current controlled
+    fixtures but must not be interpreted as proof that arbitrary external files are safe.
+  evidence:
+  - app/forprint_accounting_registry_service/one_c_io/sanitization.py
+  - app/forprint_accounting_registry_service/one_c_io/export_parsers.py
+  - app/forprint_accounting_registry_service/one_c_io/sandbox_sources.py
+  disposition: CURRENT_SANDBOX_ASSUMPTION_FUTURE_EXTERNAL_INPUT_GATE_REQUIRED
+- finding_id: ACC-F11
+  severity: MEDIUM
+  classification: STATUS_SURFACE_STALENESS
+  summary: coordination/status/current_status.yaml contains literal {now}/{branch}/{commit} placeholders and marks checks pending, while repository carries an older generated check report
+    with status OK; neither should be treated as a fresh authoritative current verification.
+  evidence:
+  - coordination/status/current_status.yaml
+  - coordination/status/current_status.md
+  - reports/accounting_registry_check_report.json
+  disposition: CURRENT_STATUS_GENERATION_RECONCILIATION_CANDIDATE
+- finding_id: ACC-F12
+  severity: MEDIUM
+  classification: OPERATOR_CHECK_SIDE_EFFECT
+  summary: Make governance-check invokes blueprint-pull and status-report; therefore a nominal check may mutate sibling Blueprint checkout and generated report files instead of being
+    purely non-mutating validation.
+  evidence:
+  - Makefile
+  disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+- finding_id: ACC-F13
+  severity: MEDIUM
+  classification: PLACEHOLDER_SURFACE
+  summary: 'Several surfaces remain empty placeholders: docs/ARCHITECTURE.md, two app contract schema JSON files, scripts/dev_check.sh and tests/contract/test_contract_files_exist.py.'
+  evidence:
+  - docs/ARCHITECTURE.md
+  - app/forprint_accounting_registry_service/contracts/incoming/accounting_export_requested.v1.schema.json
+  - app/forprint_accounting_registry_service/contracts/outgoing/library_change_request_submitted.v1.schema.json
+  - scripts/dev_check.sh
+  - tests/contract/test_contract_files_exist.py
+  disposition: CLASSIFY_AS_PLACEHOLDER_DO_NOT_TREAT_AS_CAPABILITY
+- finding_id: ACC-F14
+  severity: MEDIUM
+  classification: UNWIRED_STORAGE_SURFACES
+  summary: RequiredFieldMissingIssueStorage, FieldTypeMismatchIssueStorage and DefaultValueDecisionStorage exist, but current mapping policy/service does not create these typed records;
+    current persistence primarily uses MappingIssueStorage and UnmappedFieldRecordStorage.
+  evidence:
+  - app/forprint_accounting_registry_service/storage/mapping_models.py
+  - app/forprint_accounting_registry_service/services/mapping_issue_registry.py
+  - app/forprint_accounting_registry_service/one_c_io/mapping.py
+  disposition: PARTIAL_FOUNDATION_NOT_CURRENT_RUNTIME_CAPABILITY
+- finding_id: ACC-F15
+  severity: MEDIUM
+  classification: PRODUCTION_RELIABILITY_GAP_EXPECTED
+  summary: No production migrations, transactional batch boundary, outbox/inbox/idempotency/correlation/replay, backup/restore or live integration resilience exists; this matches the
+    sandbox stage but is a hard gate before production accounting automation.
+  evidence:
+  - app/forprint_accounting_registry_service/storage/database.py
+  - app/forprint_accounting_registry_service/one_c_io/import_pipeline.py
+  - docs/architecture/accounting_storage_foundation.md
+  disposition: FUTURE_OPERATIONAL_FITNESS_GATE
+- finding_id: ACC-F16
+  severity: MEDIUM
+  classification: MACHINE_CURRENTNESS_GAP
+  summary: Blueprint machine marks accounting_to_crm_financial_status and associated data flow active_development, but repository has no cross-module runtime endpoint/transport integration
+    beyond health and local placeholder contracts.
+  evidence:
+  - coordination/machine/contracts.yaml
+  - coordination/machine/data_flows.yaml
+  - app/forprint_accounting_registry_service/main.py
+  - contracts/placeholders/accounting.payment_status_reference.v1.yaml
+  disposition: MACHINE_STATUS_RECONCILIATION_CANDIDATE
+roadmap_reconciliation_candidates:
+- candidate_id: ACC-R01
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  proposal: Record exact current generation as v0.5 offline sanitized import/staging foundation plus governance overlay, and distinguish current local capability from broader strategic
+    accounting target.
+- candidate_id: ACC-R02
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  proposal: Explicitly reconcile generic Counterparty/Product/ExternalMapping residue with stable Business Partner, Library catalog/material semantics, Operations identities and accounting-only
+    projections.
+- candidate_id: ACC-R03
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  proposal: Classify raw snapshot, staging, mapping, mapping diagnostics, import/export/reconciliation jobs, AccountingDocument and invoice/payment/order references as implemented foundation
+    versus shell/placeholder.
+- candidate_id: ACC-R04
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  proposal: Use existing Counterparty fields as evidence for required billing/customer/responsibility decomposition rather than adopting them as canonical accounting ownership.
+- candidate_id: ACC-R05
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H06
+  proposal: State that current parsers cover structured JSON/CSV/XML/YAML/TXT exports only; PDF/Word/scans/OCR, supplier-template learning and canonical material alias mapping remain
+    future target capabilities.
+- candidate_id: ACC-R06
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H07
+  proposal: Record that invoice/payment references exist only as shells; accounts-receivable state machine, promises, disputes, partial payment and bank/payment reconciliation remain
+    unimplemented.
+- candidate_id: ACC-R07
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  proposal: 'Clarify actual 1C maturity: fixture/manual export parsing and safe sandbox abstractions exist; real direct DB/API connection, source binding, idempotency, recovery/conflict
+    rules and live writes do not.'
+- candidate_id: ACC-R08
+  target_step: FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  proposal: Add Contract Registry and Integration Gateway readiness to dependency gating, alongside Operations, Library, Warehouse and Calculator; stable Business Partner reference boundary
+    must also be resolved.
+machine_reconciliation_candidates:
+- candidate_id: ACC-M01
+  surface: machine/contracts.yaml + machine/data_flows.yaml
+  issue: accounting_to_crm_financial_status active_development has no corresponding runtime integration in module code.
+  action_now: none
+- candidate_id: ACC-M02
+  surface: machine/modules.yaml + machine/ownership.yaml + machine/data_objects.yaml
+  issue: Declared invoice/payment/accounting ownership is strategically valid but implementation maturity is only document/reference shells; avoid reading machine ownership as proof
+    of implemented lifecycle.
+  action_now: none
+- candidate_id: ACC-M03
+  surface: contract authority
+  issue: Repository points canonical contract truth to Library while Blueprint has Contract Registry as interface contract authority.
+  action_now: none
+- candidate_id: ACC-M04
+  surface: module identity references
+  issue: Repository still contains historical forprint_operational_registry references that should eventually reconcile to canonical forprint_operations_control_registry while preserving
+    history.
+  action_now: none
+- candidate_id: ACC-M05
+  surface: 1C capability/state representation
+  issue: Machine/roadmap should distinguish offline sandbox export parsing from production synchronization/live connector capability.
+  action_now: none
+- candidate_id: ACC-M06
+  surface: party and catalog references
+  issue: Generic Counterparty/Product models require alignment with stable Business Partner and Library canonical identities before they can influence machine ownership.
+  action_now: none
+verification_assessment:
+  historical_check_report_status: OK
+  historical_report_is_fresh_verification: false
+  test_function_count_observed_in_clean_corpus: 117
+  test_strengths:
+  - sandbox production-write refusal
+  - mapping/manual-review behavior
+  - local SQLModel storage
+  - structured export parsing
+  - placeholder contract markers
+  - boundary documentation presence
+  verification_gaps:
+  - boundary validator misses generic models package
+  - no adversarial external-input corpus
+  - no cross-module contract tests
+  - no production idempotency/retry/recovery tests
+  - no accounts-receivable workflow tests
+  - no supplier PDF/OCR workflow tests
+  - no live 1C integration tests by design
+methodology_improvement_candidates:
+- candidate_id: METH-ACC-01
+  problem: Initial preflight included virtualenv dependency tree and distorted semantic source counts.
+  proposal: Standard L0 inventory must exclude all recognized virtualenv/generated package metadata before semantic segmentation.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-02
+  problem: v0.1 porcelain parser stripped the leading status space of first Git record.
+  proposal: Preserve raw leading spaces when parsing git status --porcelain and test staged/unstaged/deleted/untracked cases.
+  already_applied_locally_to_analysis: true
+- candidate_id: METH-ACC-03
+  problem: v0.2 clean-current archive still captured .git metadata/object files although semantic packet selection did not use them.
+  proposal: Exclude .git from inventory/archive corpus itself, not only from semantic packet selection; report semantic module file count separately from transport/provenance metadata.
+  already_applied_locally_to_analysis: false
+- candidate_id: METH-ACC-04
+  problem: A green validator can hide semantic blind spots when it checks only selected directories.
+  proposal: L0 semantic audit should compare validator coverage scope against actual risky semantic surfaces and record validator-semantic gaps.
+  already_applied_locally_to_analysis: true
+overall_conclusion:
+  summary: Accounting Registry Service is a coherent and safety-conscious offline 1C sandbox/import-staging foundation with meaningful tests and persistence, but it is not yet the broader
+    operational/commercial accounting system described by current Human Intent and portfolio target state.
+  safe_current_claim: sandbox sanitized import/export/staging/mapping foundation
+  unsafe_or_unsupported_claims:
+  - production accounting runtime
+  - live 1C integration
+  - accounts receivable automation
+  - supplier OCR/goods receipt automation
+  - cross-module financial-status runtime
+  - mature settlement/reconciliation engine
+  primary_reconciliation_themes:
+  - strategic target versus v0.5 implementation
+  - generic Counterparty/Product semantic residue
+  - Contract Registry versus historical Library contract authority
+  - historical Operations module alias
+  - 1C capability naming/currentness
+  - validator coverage semantics
+  - status/operator-surface currentness
+  next_action: BUILD_CROSS_PROJECT_BLUEPRINT_RECONCILIATION_PACKET
+authority:
+  implementation_authority_created: false
+  roadmap_mutation_authority_created: false
+  machine_mutation_authority_created: false
+  execution_authority_created: false
+  acceptance_authority_created: false

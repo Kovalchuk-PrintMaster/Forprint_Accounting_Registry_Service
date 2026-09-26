@@ -1,0 +1,150 @@
+schema_version: forprint_accounting_registry_service_finding_disposition_matrix_v0_1
+module_id: forprint_accounting_registry_service
+findings:
+- finding_id: ACC-F01
+  classification: STRATEGIC_TARGET_AHEAD_OF_IMPLEMENTATION
+  blueprint_alignment: EXPECTED_DIRECTIONAL_GAP
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_CURRENT_V0_5_BASELINE
+  canonical_disposition: REFINE_EXISTING_ROADMAP_STEPS
+  reason: Blueprint target is intentionally broader than current implementation; roadmap should record exact implemented baseline without weakening target direction.
+- finding_id: ACC-F02
+  classification: CONTRACT_AUTHORITY_DRIFT
+  blueprint_alignment: MODULE_LOCAL_STALE_REFERENCE_BLUEPRINT_DIRECTION_CURRENT
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: DEFER_NO_EVIDENCE_OWNERSHIP_IS_WRONG
+  module_disposition: LATER_RECONCILE_LOCAL_MANIFEST_AND_PLACEHOLDER_CONTRACT_TEXT
+  canonical_disposition: ADD_CONTRACT_AND_ROUTING_READINESS_TO_DEPENDENCY_GATE
+  reason: Contract Registry / Integration Gateway are now relevant cross-module readiness dependencies; local historical Library contract-authority text should not be silently promoted.
+- finding_id: ACC-F03
+  classification: ACTIVE_TESTED_SEMANTIC_RESIDUE
+  blueprint_alignment: BLUEPRINT_BOUNDARY_STRONGER_THAN_CURRENT_LOCAL_MODEL
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H02
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H04
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_AND_RECONCILE_BEFORE_REFACTOR
+  canonical_disposition: REFINE_OWNERSHIP_AND_CONTEXT_STEPS
+  reason: Current generic Counterparty/Product models are evidence of historical local projection semantics, not proof Accounting should own CRM/catalog/logistics/calculator truth.
+- finding_id: ACC-F04
+  classification: VALIDATOR_SEMANTIC_BLIND_SPOT
+  blueprint_alignment: INTERNAL_VALIDATION_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Validator coverage weakness is a module engineering-quality issue, not a portfolio ownership change.
+- finding_id: ACC-F05
+  classification: IDENTITY_ALIAS_DRIFT
+  blueprint_alignment: BLUEPRINT_CANONICAL_ID_ALREADY_CORRECT
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: BOUNDED_LOCAL_IDENTITY_RECONCILIATION_LATER
+  canonical_disposition: NO_BLUEPRINT_IDENTITY_CHANGE
+  reason: Historical operational-registry alias exists only in module-local current surfaces; Blueprint already uses forprint_operations_control_registry.
+- finding_id: ACC-F06
+  classification: DECLARED_OWNERSHIP_EXCEEDS_IMPLEMENTED_DOMAIN_RUNTIME
+  blueprint_alignment: TARGET_OWNERSHIP_VALID_IMPLEMENTATION_PARTIAL
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: DEFER_STATUS_CURRENTNESS_NOT_OWNERSHIP_ERROR
+  module_disposition: CLASSIFY_REFERENCES_AND_DOCUMENTS_AS_FOUNDATION_OR_SHELL
+  canonical_disposition: REFINE_CURRENTNESS_WITHOUT_REASSIGNING_OWNERSHIP
+  reason: Machine ownership describes intended domain authority; audit proves lifecycle maturity is partial, not that another module owns invoice/payment truth.
+- finding_id: ACC-F07
+  classification: ONE_C_CAPABILITY_NAMING_OVERSTATEMENT
+  blueprint_alignment: ROADMAP_H09_ALREADY_EXPECTS_MATURE_FUTURE_EXCHANGE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: DOCUMENT_CURRENT_FIXTURE_SANDBOX_BOUNDARY
+  canonical_disposition: REFINE_CURRENT_1C_MATURITY
+  reason: Current direct-I/O names must not be read as a live 1C connector or real direct database capability.
+- finding_id: ACC-F08
+  classification: SANDBOX_WRITE_SIMULATION_SEMANTIC_MISMATCH
+  blueprint_alignment: LOCAL_SEMANTIC_GAP_WITHIN_SANDBOX
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: LATER_RENAME_OR_IMPLEMENT_ACTUAL_WORKING_COPY_MUTATION_WITH_TESTS
+  canonical_disposition: REFINE_H09_SAFETY_CURRENTNESS
+  reason: Successful safety authorization is not equivalent to a write being executed; roadmap should preserve this distinction before mature 1C exchange.
+- finding_id: ACC-F09
+  classification: SOURCE_PROVENANCE_BINDING_GAP
+  blueprint_alignment: FUTURE_1C_SECURITY_REQUIREMENT
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_PROVENANCE_HARDENING
+  canonical_disposition: REFINE_H09_WITH_SOURCE_BINDING_REQUIREMENT
+  reason: Validated source metadata and parsed export path are not yet cryptographically/semantically bound.
+- finding_id: ACC-F10
+  classification: SANITIZATION_TRUSTS_DECLARED_METADATA
+  blueprint_alignment: CURRENT_CONTROLLED_FIXTURE_ASSUMPTION
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_EXTERNAL_INPUT_GATE
+  canonical_disposition: REFINE_H09_WITH_UNTRUSTED_INPUT_BOUNDARY
+  reason: Current sanitization is metadata trust, not arbitrary-content sanitization; acceptable for controlled sandbox only.
+- finding_id: ACC-F11
+  classification: STATUS_SURFACE_STALENESS
+  blueprint_alignment: MODULE_COORDINATION_QUALITY_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Literal placeholders and historical check report freshness are local coordination/reporting concerns.
+- finding_id: ACC-F12
+  classification: OPERATOR_CHECK_SIDE_EFFECT
+  blueprint_alignment: OPERATOR_SURFACE_GOVERNANCE_GAP
+  roadmap_targets: []
+  machine_disposition: NO_CHANGE
+  module_disposition: INTERNAL_SERVICE_IMPROVEMENT_CANDIDATE
+  canonical_disposition: NO_PORTFOLIO_ROADMAP_CHANGE
+  reason: Mutating pull/report behavior under governance-check belongs to internal operator-quality work, not accounting domain roadmap.
+- finding_id: ACC-F13
+  classification: PLACEHOLDER_SURFACE
+  blueprint_alignment: CURRENTNESS_EVIDENCE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H01
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: DO_NOT_COUNT_PLACEHOLDERS_AS_CAPABILITIES
+  canonical_disposition: REFINE_SELF_INVENTORY_LANGUAGE
+  reason: Placeholder docs/contracts/tests are evidence for currentness classification, not implemented contract capability.
+- finding_id: ACC-F14
+  classification: UNWIRED_STORAGE_SURFACES
+  blueprint_alignment: PARTIAL_FOUNDATION
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H03
+  machine_disposition: NO_CHANGE
+  module_disposition: PRESERVE_AS_PARTIAL_FOUNDATION
+  canonical_disposition: REFINE_H03_IMPLEMENTED_VS_UNWIRED_INVENTORY
+  reason: Typed storage records exist but are not wired into current mapping service behavior.
+- finding_id: ACC-F15
+  classification: PRODUCTION_RELIABILITY_GAP_EXPECTED
+  blueprint_alignment: EXPECTED_PRE_PRODUCTION_GATE
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H09
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: NO_CHANGE
+  module_disposition: FUTURE_OPERATIONAL_FITNESS_GATE
+  canonical_disposition: REFINE_MATURE_1C_AND_DEPENDENCY_GATES
+  reason: Idempotency, retries, replay, migrations and backup/restore are required before live accounting automation but their absence is consistent with current sandbox stage.
+- finding_id: ACC-F16
+  classification: MACHINE_CURRENTNESS_GAP
+  blueprint_alignment: FLOW_STATUS_AHEAD_OF_RUNTIME
+  roadmap_targets:
+  - FORPRINT_ACCOUNTING_REGISTRY_SERVICE-H10
+  machine_disposition: DEFERRED_RECONCILE_BEFORE_IMPLEMENTATION
+  module_disposition: NO_RUNTIME_CLAIM_UNTIL_REAL_CROSS_MODULE_SURFACE_EXISTS
+  canonical_disposition: DO_NOT_MUTATE_MACHINE_IN_L0_CLOSEOUT
+  reason: accounting_to_crm_financial_status is marked active_development while no module runtime integration exists; changing machine status now requires broader contract/currentness
+    policy, not a one-module guess.
